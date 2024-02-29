@@ -1,0 +1,60 @@
+@import url('https://fonts.maateen.me/kalpurush/font.css');
+
+
+
+body {
+  font-family: 'Kalpurush', sans-serif;
+  background-color: #e9ecef;
+  margin: 0 auto;
+}
+
+
+a {
+  text-decoration: none !important;
+}
+
+a.gp-top {
+  position: absolute;
+  left: 29px;
+  font-size: 36px;
+
+}
+
+.navbar-toggler:focus {
+  text-decoration: none;
+  box-shadow: 0 0 0 0.05rem;
+}
+
+code {
+  font-family: 'Mitr';
+}
+
+.dropdown-menu {
+  min-width: 4rem;
+}
+
+
+.add-question-btn {
+  margin-right: 40px !important;
+  margin-top: 10px !important;
+  height: 40px;
+  width: 100px;
+  background: #FBB040;
+  margin: 1rem;
+  border-radius: 5px;
+  padding-top: 8.5px;
+  font-weight: 600;
+  background: linear-gradient(45deg, #DC8B13, #e69b00, #e5de00, #e69b00, #DC8B13);
+  background-size: 300% 300%;
+  animation: gradient 7s ease infinite;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #055160c5;
+  color: #fff;
+}
+
+.accordion-button:focus {
+  text-decoration: none;
+  box-shadow: 0 0 0 0.09rem rgba(13, 110, 253, 0.25) !important
+}
