@@ -9,6 +9,7 @@ const MyCourses = () => {
 
     const [selectedVideo, setSelectedVideo] = useState({});
 
+
     const courseData =
     {
         "id": "6d85da9f-1adf-4d81-82ef-53296c3188dd",
