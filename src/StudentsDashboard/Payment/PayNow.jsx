@@ -3,7 +3,11 @@ import '../Styles/StuDashboard.css'
 import bkash from '../../assets/icons/bKash.svg'
 import nagad from '../../assets/icons/nagad.png'
 import { Button } from 'antd';
+import { useParams } from 'react-router-dom';
 const PayNow = () => {
+
+    const { id } = useParams()
+    console.log(id);
 
     const [method, setMethod] = useState(null)
 

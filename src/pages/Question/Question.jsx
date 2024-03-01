@@ -1,8 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Dropdown } from "react-bootstrap";
+import useAllCourses from '../../hooks/useAllCourses';
 
 const Question = () => {
     const navigate = useNavigate();
+
+    const { coursesData, isLoading } = useAllCourses()
+
 
     const data = [
         {
@@ -34,6 +38,12 @@ const Question = () => {
         console.log(id);
     };
 
+    if (isLoading) {
+        return null
+    }
+
+    console.log(coursesData);
+
     return (
         <div>
             <div className='m-2 text-end'>
@@ -56,7 +66,7 @@ const Question = () => {
                             <tr key={item.id}>
                                 <td>{index + 1}</td>
                                 <td>{item.name}</td>
-                                <td><p>{item.description.slice(0, 100)}</p></td>
+                                <td><p>{item.description.slice(0, 50)}</p></td>
                                 <td>
                                     <ul>
                                         {item.subCategories.map(subCategory => (

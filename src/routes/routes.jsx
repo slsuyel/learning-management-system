@@ -31,13 +31,16 @@ import StudentDashboardLayout from "../StudentsDashboard/StuDashboard/StudentDas
 import AllCourses from './../StudentsDashboard/Courses/AllCourses';
 import CoursesDetails from './../StudentsDashboard/Courses/CoursesDetails';
 import PayNow from "../StudentsDashboard/Payment/PayNow";
-import MyCourses from "../StudentsDashboard/StuDashboard/MyCourses";
+import MyCourses from "../StudentsDashboard/StuDashboard/MyCourses/MyCourses";
 import Affiliate from "../StudentsDashboard/Affiliate/Affiliate";
 import SuccessStory from "../pages/SuccessStory/SuccessStory";
 import Setting from "../StudentsDashboard/Setting/Setting";
 import PaidStudent from "../pages/Students/PaidStudent";
 import PaymentAdmin from "../pages/Payment/PaymentAdmin";
 import ViewCourses from "../pages/Question/ViewCourses";
+import CoursesPage from "../pages/Question/CoursesPage";
+import CourseCategory from "../pages/CourseCategory/CourseCategory";
+import MyCoursesPage from "../StudentsDashboard/StuDashboard/MyCourses/MyCoursesPage";
 
 export const router = createBrowserRouter([
     {
@@ -83,8 +86,8 @@ export const router = createBrowserRouter([
     },
     {
         path: "/user-db",
-        element: <StudentCheck>  <StudentDashboardLayout /></StudentCheck>,
-        // element: <StudentDashboardLayout />,
+        // element: <StudentCheck>  <StudentDashboardLayout /></StudentCheck>,
+        element: <StudentDashboardLayout />,
         errorElement: <ErrorPage />,
         children: [
             {
@@ -104,6 +107,10 @@ export const router = createBrowserRouter([
 
             {
                 path: "my-courses",
+                element: <MyCoursesPage />,
+            },
+            {
+                path: "my-courses/:courseId",
                 element: <MyCourses />,
             },
             {
@@ -123,7 +130,7 @@ export const router = createBrowserRouter([
                 element: <Setting />,
             },
             {
-                path: "payment",
+                path: "payment/:id",
                 element: <PayNow />,
             },
 
@@ -156,7 +163,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'courses',
-                element: <Question />
+                element: <CoursesPage />
             },
             {
                 path: 'courses/view/:id',
@@ -177,6 +184,10 @@ export const router = createBrowserRouter([
             {
                 path: 'teacher/edit/:id',
                 element: <TeacherEdit />
+            },
+            {
+                path: 'category',
+                element: <CourseCategory />
             },
             {
                 path: 'batches',

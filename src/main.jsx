@@ -11,14 +11,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import AuthProviders from './Providers/AuthProviders';
 import { router } from './routes/routes';
 import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <AuthProviders>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ToastContainer />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </Provider>
     </QueryClientProvider>
   </AuthProviders>,
   document.getElementById('root')

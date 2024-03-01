@@ -9,7 +9,7 @@ const useAllCourses = (id) => {
         const fetchData = async () => {
             try {
                 const response = await callApi("GET", `/api/courses`);
-                setData(response);
+                setData(response.data.data);
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching student data:', error);

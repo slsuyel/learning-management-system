@@ -61,6 +61,12 @@ export default function Sidebar() {
                   <p className='text-white'>Courses</p>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/dashboard/category" className="nav-link">
+                  <i className="nav-icon fa-solid fa-file-circle-question"></i>
+                  <p className='text-white'>Category</p>
+                </Link>
+              </li>
 
               <li className="nav-item">
                 <Link to="/dashboard/batches " className="nav-link">

@@ -27,14 +27,10 @@ const Profile = () => {
                                         <h4>{studentData.founder_name}</h4>
                                         <p className="text-secondary mb-1">Student ID: {studentData.id}</p>
                                         <p className="text-muted font-size-sm">Location : {studentData.location}</p>
-                                        {/* <span >
-                                            <span id="meet-link" className="fst-italic">
-                                                <a className="btn btn-primary mx-2 text-decoration-none" href={meetLink}> Meeting</a>
-                                            </span>
-                                        </span>
-                                        <button className="btn btn-outline-primary">Message</button>
+
+                                        {/* 
                                         <div className="text-center my-2">
-                                            <button onClick={studentLogOut} className='btn btn-danger'><i className="fa-solid fa-right-from-bracket"></i> Log Out</button>
+                                            <button className='btn btn-danger'><i className="fa-solid fa-right-from-bracket"></i> Log Out</button>
                                         </div> */}
                                     </div>
                                 </div>
