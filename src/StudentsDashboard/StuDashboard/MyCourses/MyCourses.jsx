@@ -5,9 +5,10 @@ import VideoPlayer from '../VideoPlayer';
 import { useParams } from 'react-router-dom';
 
 const MyCourses = () => {
-    const { courseId } = useParams()
+    // const { courseId } = useParams()
 
     const [selectedVideo, setSelectedVideo] = useState({});
+
 
 
     const courseData =
