@@ -6,7 +6,9 @@ body {
   font-family: 'Kalpurush', sans-serif;
   background-color: #e9ecef;
   margin: 0 auto;
+
 }
+
 
 
 a {
@@ -57,4 +59,16 @@ code {
 .accordion-button:focus {
   text-decoration: none;
   box-shadow: 0 0 0 0.09rem rgba(13, 110, 253, 0.25) !important
+}
+
+
+
+
+/* Custom CSS */
+@media (max-width: 576px) {
+
+  /* Adjust breakpoint as needed */
+  .hidden-on-mobile {
+    display: none !important;
+  }
 }

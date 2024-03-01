@@ -9,7 +9,6 @@ import CourseCurriculum from '../CourseCurriculum';
 
 const CoursesDetails = () => {
     const navigate = useNavigate()
-
     const location = useLocation()
     const details =
     {

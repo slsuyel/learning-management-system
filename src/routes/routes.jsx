@@ -35,6 +35,9 @@ import MyCourses from "../StudentsDashboard/StuDashboard/MyCourses";
 import Affiliate from "../StudentsDashboard/Affiliate/Affiliate";
 import SuccessStory from "../pages/SuccessStory/SuccessStory";
 import Setting from "../StudentsDashboard/Setting/Setting";
+import PaidStudent from "../pages/Students/PaidStudent";
+import PaymentAdmin from "../pages/Payment/PaymentAdmin";
+import ViewCourses from "../pages/Question/ViewCourses";
 
 export const router = createBrowserRouter([
     {
@@ -80,8 +83,8 @@ export const router = createBrowserRouter([
     },
     {
         path: "/user-db",
-        // element: <StudentCheck>  <StudentDashboardLayout /></StudentCheck>,
-        element: <StudentDashboardLayout />,
+        element: <StudentCheck>  <StudentDashboardLayout /></StudentCheck>,
+        // element: <StudentDashboardLayout />,
         errorElement: <ErrorPage />,
         children: [
             {
@@ -97,7 +100,9 @@ export const router = createBrowserRouter([
 
                 path: "category/:category/:subcategory",
                 element: <CoursesDetails />,
-            }, {
+            },
+
+            {
                 path: "my-courses",
                 element: <MyCourses />,
             },
@@ -138,6 +143,10 @@ export const router = createBrowserRouter([
                 element: <Students />
             },
             {
+                path: 'paid-student',
+                element: <PaidStudent />
+            },
+            {
                 path: 'student/edit/:id',
                 element: <EditStudent />
             },
@@ -146,11 +155,15 @@ export const router = createBrowserRouter([
                 element: <StudentShow />
             },
             {
-                path: 'question',
+                path: 'courses',
                 element: <Question />
             },
             {
-                path: 'question/add',
+                path: 'courses/view/:id',
+                element: <ViewCourses />
+            },
+            {
+                path: 'courses/add',
                 element: <AddQuestions />
             },
             {
@@ -170,13 +183,14 @@ export const router = createBrowserRouter([
                 element: <Batches />
             },
             {
-                path: 'blogs',
-                element: <Blogs />
+                path: 'payment',
+                element: <PaymentAdmin />
             },
             {
-                path: 'users',
-                element: <Users />
+                path: 'affiliate',
+                element: <Affiliate />
             },
+
         ]
     }
 

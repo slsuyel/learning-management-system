@@ -56,7 +56,7 @@ const Batches = () => {
                 await callApi("DELETE", `/api/teachers/${id}`);
                 toast.success('Student deleted successfully!', {
                     position: toast.POSITION.TOP_RIGHT
-                  });
+                });
                 fetchData();
             }
         } catch (error) {
@@ -65,56 +65,53 @@ const Batches = () => {
     };
     // console.log(teachers);
     return (
-        <div className='content-wrapper'>
-            <div className="content-header">
-                <Table striped bordered responsive >
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th> name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {teachers.length > 0 ? (
-                            teachers.map((teacher, index) => (
-                                <tr key={teacher.id}>
-                                    <td className='text-nowrap'>{index + pageNo}</td>
-                                    <td className='text-nowrap'>{teacher.name}</td>
-                                    <td className='text-nowrap'>{teacher.email}</td>
-                                    <td className='text-nowrap'>{teacher.role}</td>
-                                    <td className='d-flex justify-content-around gap-2'>
-                                        <Link className='btn btn-primary text-decoration-none' to={`/dashboard/student/show/${teacher.id}`}>Show</Link>
+        <>
+            <Table striped bordered responsive >
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {teachers.length > 0 ? (
+                        teachers.map((teacher, index) => (
+                            <tr key={teacher.id}>
+                                <td className='text-nowrap'>{index + pageNo}</td>
+                                <td className='text-nowrap'>{teacher.name}</td>
+                                <td className='text-nowrap'>{teacher.email}</td>
+                                <td className='text-nowrap'>{teacher.role}</td>
+                                <td className='d-flex justify-content-around gap-2'>
+                                    <Link className='btn btn-primary text-decoration-none' to={`/dashboard/student/show/${teacher.id}`}>Show</Link>
 
-                                        <Link className='btn btn-info text-decoration-none' to={`/dashboard/student/edit/${teacher.id}`}>Edit</Link>
+                                    <Link className='btn btn-info text-decoration-none' to={`/dashboard/student/edit/${teacher.id}`}>Edit</Link>
 
-                                        <button
-                                            onClick={() => handleTeacherDelete(teacher.id)}
-                                            className='btn btn-danger'> Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="6">
-                                    <Loader />
+                                    <button
+                                        onClick={() => handleTeacherDelete(teacher.id)}
+                                        className='btn btn-danger'> Delete
+                                    </button>
                                 </td>
                             </tr>
-                        )}
-                    </tbody>
-                </Table>
-                <Paginate
-                    Totalpageprops={totalPages}
-                    per_page={per_page}
-                    totalitems={totalitems}
-                    route='/dashboard/teachers'
-                />
-            </div>
-
-        </div>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="6">
+                                <Loader />
+                            </td>
+                        </tr>
+                    )}
+                </tbody>
+            </Table>
+            <Paginate
+                Totalpageprops={totalPages}
+                per_page={per_page}
+                totalitems={totalitems}
+                route='/dashboard/teachers'
+            />
+        </>
 
     );
 };

@@ -6,7 +6,7 @@ import Paginate from '../../components/Paginate';
 import Loader from '../../utilities/Loader';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
-const Students = () => {
+const PaidStudent = () => {
     const [pageNo, setPageNo] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [per_page, setPer_page] = useState()
@@ -119,8 +119,7 @@ const Students = () => {
             />
         </>
 
-
     );
 };
 
-export default Students;
+export default PaidStudent;

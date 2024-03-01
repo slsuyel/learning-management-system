@@ -87,54 +87,52 @@ const StudentShow = () => {
     } = studentData;
 
     return (
-        <div className='content-wrapper'>
-            <div className="content-header">
-                <h2 className='text-center my-3'>Student Information</h2>
-                <div className="row">
-                    <div className="col-md-6  d-flex flex-wrap ">
-                        <p className="mx-4 border-end border-dark pe-4">Founder Name: {founder_name}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Founder Email: {founder_email}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Founder Phone: {founder_phone}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Founder Gender: {founder_gender}</p>
+        <>
 
-                        <p className="mx-4 border-end border-dark pe-4">Company Name: {company_name}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Location: {location}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Business Category: {business_category}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Short Note: {short_note}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Website Url: {website_url}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Employee Number: {employee_number}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Formation Of Company: {formation_of_company}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Company Video link: {company_video_link}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Company Facebook link: {facebook_link}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Company Youtube link: {youtube_link}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Company Linkedin link: {linkedin_link}</p>
-                        <p className="mx-4 border-end border-dark pe-4">Attachment (company profile/pitch deck): {attachment_file}</p>
+            <h2 className='text-center my-3'>Student Information</h2>
+            <div className="row">
+                <div className="col-md-6  d-flex flex-wrap ">
+                    <p className="mx-4 border-end border-dark pe-4">Founder Name: {founder_name}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Founder Email: {founder_email}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Founder Phone: {founder_phone}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Founder Gender: {founder_gender}</p>
+
+                    <p className="mx-4 border-end border-dark pe-4">Company Name: {company_name}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Location: {location}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Business Category: {business_category}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Short Note: {short_note}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Website Url: {website_url}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Employee Number: {employee_number}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Formation Of Company: {formation_of_company}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Company Video link: {company_video_link}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Company Facebook link: {facebook_link}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Company Youtube link: {youtube_link}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Company Linkedin link: {linkedin_link}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Attachment (company profile/pitch deck): {attachment_file}</p>
+                </div>
+                <div className="col-md-6 card">
+                    <h4 className="text-center">All questions and answer : {rating}</h4>
+                    <div className="border d-flex gap-3 justify-content-end my-3 p-2">
+                        <Rating
+                            style={{ maxWidth: 180 }}
+                            value={rating}
+                            onChange={setRating}
+                            isDisabled={Number(studentData.rating) > 0}
+                        />
+                        <button onClick={handleSubmitStar}
+                            disabled={Number(studentData.rating) > 0}
+                            className="btn btn-outline-success">Submit</button>
                     </div>
-                    <div className="col-md-6 card">
-                        <h4 className="text-center">All questions and answer : {rating}</h4>
-                        <div className="border d-flex gap-3 justify-content-end my-3 p-2">
-                            <Rating
-                                style={{ maxWidth: 180 }}
-                                value={rating}
-                                onChange={setRating}
-                                isDisabled={Number(studentData.rating) > 0}
-                            />
-                            <button onClick={handleSubmitStar}
-                                disabled={Number(studentData.rating) > 0}
-                                className="btn btn-outline-success">Submit</button>
-                        </div>
-                        <div>
-                            <ol> {studentData?.exams?.map(exam => <>
-                                <li key={exam?.question}>{exam?.question}</li>
-                                <span>ans : {exam?.ans}</span>
-                            </>)}
+                    <div>
+                        <ol> {studentData?.exams?.map(exam => <>
+                            <li key={exam?.question}>{exam?.question}</li>
+                            <span>ans : {exam?.ans}</span>
+                        </>)}
 
-                            </ol>
-                        </div>
+                        </ol>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div></>
     );
 };
 

@@ -6,21 +6,44 @@ const { Sider } = Layout;
 
 const StuSidebar = () => {
     const theme = "dark";
-    const items = [
-        { key: 'profile', title: 'Profile', to: '/user-db' },
+
+    const sidebarItems = [
         {
-            key: 'submenu',
-            title: 'Courses',
-            items: [
-                { key: 'courses', title: 'All Courses', to: '/user-db/courses' },
-                { key: 'my-courses', title: 'My Courses', to: '/user-db/my-courses' }
+            key: "Profile",
+            label: <NavLink to="/user-db">Profile</NavLink>
+        },
+        {
+            key: "Courses",
+            label: "Courses",
+            children: [
+                {
+                    key: "All Courses",
+                    label: <NavLink to="/user-db/courses">All Courses</NavLink>
+                },
+                {
+                    key: "My Courses",
+                    label: <NavLink to="/user-db/my-courses">My Courses</NavLink>
+                }
             ]
         },
-        { key: 'affiliate', title: 'Affiliate', to: '/user-db/affiliate' },
-        { key: 'teachers', title: 'Teachers', to: '/user-db/teachers' },
-        { key: 'successStory', title: 'Success Story', to: '/user-db/success-story' },
-        { key: 'settings', title: 'Settings', to: '/user-db/settings' }
-    ];
+        {
+            key: "Affiliate",
+            label: <NavLink to="/user-db/affiliate">Affiliate</NavLink>
+        },
+        {
+            key: "Teachers",
+            label: <NavLink to="/user-db/teachers">Teachers</NavLink>
+        },
+        {
+            key: "Success Story",
+            label: <NavLink to="/user-db/success-story">Success Story</NavLink>
+        },
+        {
+            key: "Settings",
+            label: <NavLink to="/user-db/settings">Settings</NavLink>
+        }
+    ]
+
 
     return (
         <Sider
@@ -45,27 +68,13 @@ const StuSidebar = () => {
                 <img src='https://school-suyel.netlify.app/assets/dblogo-ixqnXm-n.png' alt="" width={150} />
             </div>
             <Menu
+                style={{ height: '100%' }}
                 theme={theme}
-                mode="inline"
-                defaultSelectedKeys={['profile']}
-            >
-                {items.map(item => (
-                    item.items ? (
-                        <SubMenu key={item.key} title={item.title}>
-                            {item.items.map(subItem => (
-                                <Menu.Item key={subItem.key}>
-                                    <NavLink to={subItem.to}>{subItem.title}</NavLink>
-                                </Menu.Item>
-                            ))}
-                        </SubMenu>
-                    ) : (
-                        <Menu.Item key={item.key}>
-                            <NavLink to={item.to}>{item.title}</NavLink>
-                        </Menu.Item>
-                    )
-                ))}
-            </Menu>
-        </Sider>
+                mode="vertical"
+                defaultSelectedKeys={["4"]}
+                items={sidebarItems}
+            />
+        </Sider >
     );
 };
 

@@ -1,109 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Button } from 'reactstrap';
-import { callApi } from '../../utilities/functions';
-import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Loader from '../../utilities/Loader';
-import '../../App.css'
+import { Link, useNavigate } from 'react-router-dom';
+import { Dropdown } from "react-bootstrap";
+
 const Question = () => {
-    const [questions, setQuestions] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const navigate = useNavigate();
 
-    const fetchData = async () => {
-        try {
-            const data = await callApi("get", "/api/questions");
-            setQuestions(data);
-            setLoading(false)
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    /* 
-    
-    api for update, methood put
-    /api/questions/${id} 
-    
-    */
+    const data = [
+        {
+            id: "28a1066f-1882-404e-9b3c-e33a506adaca",
+            name: "ডিজাইন",
+            slug: 'Design',
+            description: "প্রযুক্তি নির্ভরতা বৃদ্ধির সাথে সাথে ডিজাইন সেক্টরে ক্যারিয়ার সুযোগ বিস্তৃত হচ্ছে। ডিজাইন সেক্টরে আপনার পছন্দের . . ",
+            subCategories: [
+                { "id": 1, "name": "লোগো ডিজাইন" },
+                { "id": 2, "name": "প্রিন্ট ডিজাইন" },
+                { "id": 3, "name": "গ্রাফিক্স ডিজাইন" },
+                { "id": 4, "name": "মোশন গ্রাফিক্স" }
+            ]
+        },
+    ];
 
     const handleEdit = (id) => {
-        console.log(`Edit question with id: ${id}`);
+        // Handle edit action
+        console.log(id);
     };
 
-
-    if (loading) {
-        return <Loader />
-    }
-    const handleDelete = async (id) => {
-        try {
-            const result = await Swal.fire({
-                title: 'Are you sure?',
-                text: 'You are about to delete this question.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'Cancel'
-            });
-            if (result.isConfirmed) {
-                await callApi("delete", `/api/questions/${id}`);
-                fetchData();
-                Swal.fire('Deleted!', 'The question has been deleted.', 'success');
-            }
-        } catch (error) {
-            console.error("Error deleting question:", error);
-            Swal.fire('Error', 'An error occurred while deleting the question.', 'error');
-        }
+    const handleView = (id) => {
+        navigate(`/dashboard/courses/view/${id}`);
+        console.log(id);
     };
 
+    const handleDelete = (id) => {
+        // Handle delete action
+        console.log(id);
+    };
 
-    // console.log(questions);
     return (
-        <div className='content-wrapper'>
-            <div className="content-header">
-                <div className='m-2 text-end'>
-                    <Link className='add-question-btn px-3 py-1 text-decoration-none' to='/dashboard/question/add'>Add Questions</Link>
-                </div>
-                <Table striped responsive>
+        <div>
+            <div className='m-2 text-end'>
+                <Link className='add-question-btn px-3 py-1 text-decoration-none' to='/dashboard/courses/add'>Add Courses</Link>
+            </div>
+
+            <div className="table-responsive">
+                <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Question</th>
-                            <th>Options</th>
-                            <th>Actions</th>
+                            <th>SL</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Sub Categories</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {questions.map((question, index) => (
-                            <tr key={question.id}>
-                                <td >{index + 1}</td>
-                                <td >{question.question_text}</td>
-                                <td >
+                        {data.map((item, index) => (
+                            <tr key={item.id}>
+                                <td>{index + 1}</td>
+                                <td>{item.name}</td>
+                                <td><p>{item.description.slice(0, 100)}</p></td>
+                                <td>
                                     <ul>
-                                        {question.answers.map((answer, answerIndex) => (
-                                            <li key={answerIndex}>{answer.answer_text}</li>
+                                        {item.subCategories.map(subCategory => (
+                                            <li key={subCategory.id}>{subCategory.name}</li>
                                         ))}
                                     </ul>
                                 </td>
-                                <td className="d-flex gap-3 justify-content-between">
-                                    <Button color="primary" onClick={() => handleEdit(question.id)}>
-                                        Edit
-                                    </Button>{" "}
-                                    <Button color="danger" onClick={() => handleDelete(question.id)}>
-                                        Delete
-                                    </Button>
+                                <td>
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="secondary" id={`dropdownMenuButton${index}`}>
+                                            Action
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                            <button className="dropdown-item" onClick={() => handleView(item.id)}>View</button>
+                                            <button className="dropdown-item" onClick={() => handleEdit(item.id)}>Edit</button>
+                                            <button className="dropdown-item" onClick={() => handleDelete(item.id)}>Delete</button>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
-
-                </Table>
-
+                </table>
             </div>
         </div>
     );

@@ -41,29 +41,27 @@ const TeacherEdit = () => {
     };
 
     return (
-        <div className='content-wrapper'>
-            <div className="content-header">
-                <Form onSubmit={handleUpdate}>
-                    <Form.Group controlId="Name">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            name="name"
-                            defaultValue={teacherData?.name} />
-                    </Form.Group>
-                    <Form.Group controlId="Email">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                            type="email"
-                            name="email"
-                            defaultValue={teacherData?.email} />
-                    </Form.Group>
-                    <Button type='submit' className='border-0 btn mb-3 py-2 rounded-0 w-100' style={{ backgroundColor: '#05BCCA' }}>
-                        Update
-                    </Button>
-                </Form>
-            </div>
-        </div>
+
+        <Form onSubmit={handleUpdate}>
+            <Form.Group controlId="Name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                    type="text"
+                    name="name"
+                    defaultValue={teacherData?.name} />
+            </Form.Group>
+            <Form.Group controlId="Email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                    type="email"
+                    name="email"
+                    defaultValue={teacherData?.email} />
+            </Form.Group>
+            <Button type='submit' className='border-0 btn mb-3 py-2 rounded-0 w-100' style={{ backgroundColor: '#05BCCA' }}>
+                Update
+            </Button>
+        </Form>
+
     );
 };
 

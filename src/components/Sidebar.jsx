@@ -5,7 +5,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="main-sidebar nav-pills sidebar-dark-primary sidebar-no-expand elevation-1" style={{backgroundColor:'#3940A4'}}>
+      <aside className="main-sidebar nav-pills sidebar-dark-primary sidebar-no-expand elevation-1" style={{ backgroundColor: '#3940A4' }}>
         <Link to="/dashboard" className="brand-link text-decoration-none py-2">
           <img
             src="https://w7.pngwing.com/pngs/502/794/png-transparent-white-arrow-going-up-computer-icons-dashboard-car-symbol-dashboard-icon-miscellaneous-angle-logo.png"
@@ -40,6 +40,12 @@ export default function Sidebar() {
                   <p className='text-white'>Student</p>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/dashboard/paid-student" className="nav-link">
+                  <i className="nav-icon fas fa-users"></i>
+                  <p className='text-white'>Paid Student</p>
+                </Link>
+              </li>
 
               <li className="nav-item">
                 <Link to="/dashboard/teachers" className="nav-link">
@@ -50,9 +56,9 @@ export default function Sidebar() {
 
 
               <li className="nav-item">
-                <Link to="/dashboard/question" className="nav-link">
+                <Link to="/dashboard/courses" className="nav-link">
                   <i className="nav-icon fa-solid fa-file-circle-question"></i>
-                  <p className='text-white'>Question</p>
+                  <p className='text-white'>Courses</p>
                 </Link>
               </li>
 
@@ -60,6 +66,18 @@ export default function Sidebar() {
                 <Link to="/dashboard/batches " className="nav-link">
                   <i className="nav-icon fa-solid fa-people-group"></i>
                   <p className='text-white'>Batches </p>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/dashboard/payment " className="nav-link">
+                  <i className="nav-icon fa-solid fa-people-group"></i>
+                  <p className='text-white'>Payment </p>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/dashboard/affiliate " className="nav-link">
+                  <i className="nav-icon fa-solid fa-people-group"></i>
+                  <p className='text-white'>Affiliate </p>
                 </Link>
               </li>
 
@@ -73,7 +91,7 @@ export default function Sidebar() {
                 </Link>
               </li>
 
-{/* <i class="fa-solid fa-house-chimney-user"></i> */}
+              {/* <i class="fa-solid fa-house-chimney-user"></i> */}
 
               {/* 
               <li className="nav-item">
