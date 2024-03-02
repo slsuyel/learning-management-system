@@ -86,8 +86,8 @@ export const router = createBrowserRouter([
     },
     {
         path: "/user-db",
-        // element: <StudentCheck>  <StudentDashboardLayout /></StudentCheck>,
-        element: <StudentDashboardLayout />,
+        element: <StudentCheck>  <StudentDashboardLayout /></StudentCheck>,
+        // element: <StudentDashboardLayout />,
         errorElement: <ErrorPage />,
         children: [
             {

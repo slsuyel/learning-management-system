@@ -201,7 +201,7 @@ const MyCourses = () => {
         setSelectedVideo(video);
 
     };
-    console.log(selectedVideo);
+    // console.log(selectedVideo);
 
     return (
         <div className="mb-3">

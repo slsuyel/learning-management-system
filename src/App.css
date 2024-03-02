@@ -70,6 +70,12 @@ code {
 }
 
 
+.module-card {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+
 
 /* Custom CSS */
 @media (max-width: 576px) {

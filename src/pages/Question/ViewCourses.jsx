@@ -190,17 +190,17 @@ const ViewCourses = () => {
     };
     const handleEdit = (id) => {
 
-        console.log(id);
+        //console.log(id);
     };
 
 
     const handleDelete = (id) => {
         // Handle delete action
-        console.log(id);
+        //console.log(id);
     };
     const handleCurriculm = (data) => {
         setIsModalOpen(true);
-        console.log(data);
+        //console.log(data);
     };
 
     return (

@@ -1,32 +1,22 @@
-import { useState, useEffect } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
 import { callApi } from '../utilities/functions';
-import { useLocation } from 'react-router-dom';
 
-const useAllCourses = (id) => {
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    // const location = useLocation()
-    // const ad = location.pathname
-
-
-
-
-
-    useEffect(() => {
-        const fetchData = async () => {
+const useAllCourses = () => {
+    const { refetch, data: coursesData = [], isLoading, isError } = useQuery({
+        queryKey: ["coursesData"],
+        queryFn: async () => {
             try {
-                const response = await callApi("GET", `/api/courses?type=courselist`);
-                setData(response.data);
-                setIsLoading(false);
+                const res = await callApi("GET", `/api/courses?type=courselist`);
+                return res.data;
             } catch (error) {
-                console.error('Error fetching student data:', error);
-                setIsLoading(false);
+                console.error("Error fetching coursesData:", error);
+                throw new Error("Failed to fetch coursesData");
             }
-        };
-        fetchData();
-    }, [id]);
+        },
+    });
 
-    return { coursesData: data, isLoading };
+    return { coursesData, refetch, isLoading, isError };
 };
 
 export default useAllCourses;

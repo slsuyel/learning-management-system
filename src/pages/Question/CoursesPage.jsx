@@ -6,10 +6,11 @@ import CourseCurriculum from '../../StudentsDashboard/CourseCurriculum';
 import Loader from '../../utilities/Loader';
 import { Link } from 'react-router-dom';
 import AddModuleModal from '../../components/Modals/AddModuleModal';
+import { callApi } from '../../utilities/functions';
 
 const CoursesPage = () => {
     const [selectedCourses, setSelectedCourses] = useState(null);
-    const { coursesData, isLoading } = useAllCourses()
+    const { coursesData, refetch, isLoading } = useAllCourses()
     const [addModule, setAddModule] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,13 +22,16 @@ const CoursesPage = () => {
     };
     const handleEdit = (id) => {
 
-        console.log(id);
+        //console.log(id);
     };
 
 
-    const handleDelete = (id) => {
-        // Handle delete action
-        console.log(id);
+    const handleDelete = async (id) => {
+        const res = await callApi('Delete', `/api/courses/${id}`)
+        if (res.message = 'Course deleted successfully') {
+            alert("Course deleted successfully")
+            refetch()
+        }
     };
     const handleCurriculm = (data) => {
         setIsModalOpen(true);
@@ -35,7 +39,6 @@ const CoursesPage = () => {
     };
 
     const handleAddModule = (data) => {
-
         setSelectedCourses(data)
         setAddModule(true);
     }
@@ -49,10 +52,12 @@ const CoursesPage = () => {
 
     return (
         <div>
-            <h1>Course List</h1>
+            <div className='align-items-center d-flex justify-content-around my-3'>
+                <h1>Course List</h1>
 
-            <Link to={'/dashboard/courses/create-course'}> Add Course </Link>
+                <Link className='btn btn-success' to={'/dashboard/courses/create-course'}> Add Course </Link>
 
+            </div>
 
             <div className="table-responsive">
                 <table className="table table-bordered table-striped">
@@ -62,6 +67,7 @@ const CoursesPage = () => {
                             <th>Category</th>
 
                             <th>Modules</th>
+                            <th>View Modules</th>
                             <th>Instructor</th>
                             <th>Price</th>
                             <th>Discount</th>

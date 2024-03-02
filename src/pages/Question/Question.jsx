@@ -25,24 +25,24 @@ const Question = () => {
 
     const handleEdit = (id) => {
         // Handle edit action
-        console.log(id);
+        //console.log(id);
     };
 
     const handleView = (id) => {
         navigate(`/dashboard/courses/view/${id}`);
-        console.log(id);
+        //console.log(id);
     };
 
     const handleDelete = (id) => {
         // Handle delete action
-        console.log(id);
+        //console.log(id);
     };
 
     if (isLoading) {
         return null
     }
 
-    console.log(coursesData);
+    //console.log(coursesData);
 
     return (
         <div>

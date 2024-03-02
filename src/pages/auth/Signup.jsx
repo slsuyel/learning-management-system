@@ -21,7 +21,7 @@ const Signup = () => {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    console.log(data);
+    //console.log(data);
     try {
       await callApi("POST", "/api/students", data, { 'Content-Type': 'multipart/form-data' });
       form.reset();

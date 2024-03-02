@@ -3,10 +3,10 @@ import { Button, Card, Collapse } from 'antd';
 
 const { Panel } = Collapse;
 
-const CourseCurriculum = ({ selectedCourses }) => {
+const CourseCurriculum = ({ modules }) => {
     const [selectedVideo, setSelectedVideo] = useState('');
 
-    console.log(selectedCourses);
+    console.log(modules);
 
 
     useEffect(() => {
@@ -22,19 +22,13 @@ const CourseCurriculum = ({ selectedCourses }) => {
             <h2 className="mb-4">Modules</h2>
             <div className="row w-100 mx-auto">
                 <div className="col-md-12">
-                    <Card>
+                    <Card className='module-card'>
                         <Collapse accordion>
-                            {selectedCourses && selectedCourses.length > 0 ? (
-                                selectedCourses.map((course, index) => (
-                                    <Panel header={course.module_name} key={index}>
-                                        {course.videos.map((video, videoIndex) => (
-                                            <Button key={videoIndex} onClick={() => handleVideoClick(video.video_url)} className='text-start w-100 my-1'>
-                                                <div className='d-flex fs-6 justify-content-between'>
-                                                    <span><i className="fa-solid fa-circle-check text-success"></i></span> <span>{video.video_name}</span>
-                                                    <span className='my-auto text-cyan text-sm'>{video.duration || '২ মিনিট ৪২ সেকেন্ড'}</span>
-                                                </div>
-                                            </Button>
-                                        ))}
+                            {modules && modules.length > 0 ? (
+                                modules.map((module, index) => (
+                                    <Panel header={module.module_name} key={index}>
+                                        <span>{module.module_name} </span>
+
                                     </Panel>
                                 ))
                             ) : (

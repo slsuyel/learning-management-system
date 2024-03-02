@@ -8,7 +8,7 @@ const CreateCategoryModal = ({ visible, onCancel, setLoading, refetchCategories 
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        console.log(values);
+        //console.log(values);
         try {
             setLoading(true);
             const res = await callApi('POST', "/api/courses/categories", values);
@@ -37,7 +37,7 @@ const CreateCategoryModal = ({ visible, onCancel, setLoading, refetchCategories 
                         onFinish(values);
                     })
                     .catch((info) => {
-                        console.log('Validate Failed:', info);
+                        //console.log('Validate Failed:', info);
                     });
             }}
         >
@@ -70,7 +70,7 @@ const CourseCategory = () => {
     }
 
     const handleCreate = (values) => {
-        console.log('Creating category:', values);
+        //console.log('Creating category:', values);
     };
 
     const handleCancel = () => {
@@ -79,12 +79,12 @@ const CourseCategory = () => {
 
     const handleEdit = (categoryId) => {
         // Implement the edit functionality here
-        console.log('Editing category:', categoryId);
+        //console.log('Editing category:', categoryId);
     };
 
     const handleDelete = async (categoryId) => {
         const res = await callApi("Delete", `/api/courses/categories/${categoryId}`)
-        console.log(res);
+        //console.log(res);
         refetch()
     };
     // console.log(categories);

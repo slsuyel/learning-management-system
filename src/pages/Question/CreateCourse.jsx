@@ -9,24 +9,25 @@ const { Option } = Select;
 const CreateCourse = () => {
     const { categories, refetch, isLoading, isError } = useCategoryData();
     const [aboutVideo, setAboutVideo] = useState('');
-    const [targetedAudience, setTargetedAudience] = useState('');
-    const [whatYouLearn, setWhatYouLearn] = useState('');
+    const [targeted_audience, setTargeted_audience] = useState('');
+    const [whatUlearn, setWhatUlearn] = useState('');
     const [descriptions, setDescriptions] = useState('');
     const [requirements, setRequirements] = useState('');
     const [features, setFeatures] = useState('');
-
-
+    const [loader, setLoader] = useState(false);
 
 
     const onFinish = (values) => {
-        console.log('Form values:', values);
+        //console.log('Form values:', values);
     };
 
     const handleSubmit = async (values) => {
-        console.log('Form values:', values);
+        setLoader(true)
+        //console.log('Form values:', values);
         onFinish(values);
         const res = await callApi('Post', "/api/courses", values);
         console.log(res);
+        setLoader(false)
     };
 
 
@@ -49,9 +50,9 @@ const CreateCourse = () => {
                 course_category_id: '',
                 previousPrice: 0,
                 discount: 0,
-                aboutVideo: '',
-                targetedAudience: targetedAudience,
-                whatYouLearn: whatYouLearn,
+                about_video: aboutVideo,
+                targeted_audience: targeted_audience,
+                whatUlearn: whatUlearn,
                 descriptions: descriptions,
                 requirements: requirements,
                 features: features
@@ -135,7 +136,7 @@ const CreateCourse = () => {
 
                 <Form.Item
                     label="About Video"
-                    name="aboutVideo"
+                    name="about_video"
                     className='col-md-6'
                 >
                     <ReactQuill modules={modules} style={{ height: '200px', paddingBottom: '61px' }} theme="snow" value={aboutVideo} onChange={setAboutVideo} />
@@ -143,10 +144,10 @@ const CreateCourse = () => {
 
                 <Form.Item
                     label="Targeted Audience"
-                    name="targetedAudience"
+                    name="targeted_audience"
                     className='col-md-6'
                 >
-                    <ReactQuill modules={modules} style={{ height: '200px', paddingBottom: '61px' }} theme="snow" value={targetedAudience} onChange={setTargetedAudience} />
+                    <ReactQuill modules={modules} style={{ height: '200px', paddingBottom: '61px' }} theme="snow" value={targeted_audience} onChange={setTargeted_audience} />
                 </Form.Item>
 
                 <Form.Item
@@ -175,7 +176,7 @@ const CreateCourse = () => {
                     name="whatYouLearn"
                     className='col-md-6'
                 >
-                    <ReactQuill modules={modules} style={{ height: '200px', paddingBottom: '61px' }} theme="snow" value={whatYouLearn} onChange={setWhatYouLearn} />
+                    <ReactQuill modules={modules} style={{ height: '200px', paddingBottom: '61px' }} theme="snow" value={whatUlearn} onChange={setWhatUlearn} />
                 </Form.Item>
 
                 <Form.Item
@@ -187,7 +188,7 @@ const CreateCourse = () => {
                 </Form.Item>
 
                 <Form.Item className='col-md-4'>
-                    <Button type="primary" htmlType="submit">
+                    <Button disabled={loader} type="primary" htmlType="submit">
                         Submit
                     </Button>
                 </Form.Item>

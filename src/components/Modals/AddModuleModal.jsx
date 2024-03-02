@@ -12,10 +12,10 @@ const AddModuleModal = ({ addModule, setAddModule, course }) => {
             const values = await form.validateFields();
             const dataToSend = { ...values, course_id }; values
             const res = await callApi('Post', "/api/modules", dataToSend);
-            console.log(res);
+            //console.log(res);
             setAddModule(false);
         } catch (errorInfo) {
-            console.log('Validation failed:', errorInfo);
+            //console.log('Validation failed:', errorInfo);
         }
     };
 

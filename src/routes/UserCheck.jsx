@@ -15,7 +15,7 @@ const UserCheck = ({ children }) => {
             }
             try {
                 const response = await callApi("POST", "/api/check/login", { token });
-               console.log(response);
+                // console.log(response);
                 if (response.message == 'Token is valid') {
                     setAuthenticated(true);
                 } else {
@@ -33,7 +33,7 @@ const UserCheck = ({ children }) => {
     if (loading) {
         return <Loader />;
     }
-    return authenticated ? children : <Navigate to="/student/signin" />;
+    return authenticated ? children : <Navigate to="/admin/signin" />;
 };
 
 export default UserCheck;
