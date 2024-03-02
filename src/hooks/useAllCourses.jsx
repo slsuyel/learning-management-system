@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react';
 import { callApi } from '../utilities/functions';
+import { useLocation } from 'react-router-dom';
 
 const useAllCourses = (id) => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    // const location = useLocation()
+    // const ad = location.pathname
+
+
+
+
 
     useEffect(() => {
         const fetchData = async () => {

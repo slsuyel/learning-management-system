@@ -6,8 +6,11 @@ const { Panel } = Collapse;
 const CourseCurriculum = ({ selectedCourses }) => {
     const [selectedVideo, setSelectedVideo] = useState('');
 
+    console.log(selectedCourses);
+
+
     useEffect(() => {
-        console.log(selectedVideo);
+
     }, [selectedVideo]);
 
     const handleVideoClick = (videoUrl) => {

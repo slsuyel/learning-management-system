@@ -5,11 +5,12 @@ import { Dropdown } from 'react-bootstrap';
 import CourseCurriculum from '../../StudentsDashboard/CourseCurriculum';
 import Loader from '../../utilities/Loader';
 import { Link } from 'react-router-dom';
+import AddModuleModal from '../../components/Modals/AddModuleModal';
 
 const CoursesPage = () => {
     const [selectedCourses, setSelectedCourses] = useState(null);
     const { coursesData, isLoading } = useAllCourses()
-
+    const [addModule, setAddModule] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOk = () => {
@@ -30,9 +31,15 @@ const CoursesPage = () => {
     };
     const handleCurriculm = (data) => {
         setIsModalOpen(true);
-
         setSelectedCourses(data)
     };
+
+    const handleAddModule = (data) => {
+
+        setSelectedCourses(data)
+        setAddModule(true);
+    }
+
 
 
 
@@ -66,7 +73,7 @@ const CoursesPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {coursesData.map(course => (
+                        {coursesData?.map(course => (
 
 
 
@@ -74,10 +81,10 @@ const CoursesPage = () => {
                                 <td>{course.course_name}</td>
                                 <td>Category</td>
                                 <td>
-                                    <Button onClick={() => handleCurriculm(course.modules)}>View Modules</Button>
+                                    <Button onClick={() => handleCurriculm(course)}>View Modules</Button>
                                 </td>
                                 <td>
-                                    <Button onClick={() => handleCurriculm(course.modules)}>Add Modules</Button>
+                                    <Button onClick={() => handleAddModule(course)}>Add Modules</Button>
                                 </td>
 
 
@@ -109,7 +116,7 @@ const CoursesPage = () => {
             <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <CourseCurriculum selectedCourses={selectedCourses} />
             </Modal>
-
+            {addModule && <AddModuleModal addModule={addModule} setAddModule={setAddModule} course={selectedCourses} />}
 
 
         </div >
