@@ -11,6 +11,7 @@ const CoursesDetails = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const details =
+
     {
         id: 454554544,
         title: "গ্রাফিক্স ডিজাইন",

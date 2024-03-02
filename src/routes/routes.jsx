@@ -4,18 +4,17 @@ import Signin from "../pages/auth/Signin";
 import Signup from "../pages/auth/Signup";
 import WithNavbar from "../layouts/WithNavbar";
 import Home from "../pages/home";
-import Blogs from "../pages/blogs";
-import Users from "../pages/users";
+
 import "../App.css";
 import Students from "../pages/Students/Students";
-import Question from "../pages/Question/Question";
+
 import ErrorPage from "../components/ErrorPage";
 import EditStudent from "../pages/Students/EditStudent";
 import StudentShow from "../pages/Students/StudentShow";
 import UserCheck from "./UserCheck";
 import Teacher from "../pages/Teacher/Teacher";
 import Batches from "../pages/Batches/Batches";
-import AddQuestions from "../pages/Question/AddQuestions";
+
 import StudentsDashboard from "../StudentsDashboard/StudentsDashboard";
 import Exam from "../StudentsDashboard/Exam";
 import TeacherShow from "../pages/Teacher/TeacherShow";
@@ -41,6 +40,7 @@ import ViewCourses from "../pages/Question/ViewCourses";
 import CoursesPage from "../pages/Question/CoursesPage";
 import CourseCategory from "../pages/CourseCategory/CourseCategory";
 import MyCoursesPage from "../StudentsDashboard/StuDashboard/MyCourses/MyCoursesPage";
+import CreateCourse from "../pages/Question/CreateCourse";
 
 export const router = createBrowserRouter([
     {
@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
                 element: <AllCourses />,
             },
             {
-                path: "/category/:category/:subcategory",
+                path: "courses-details/:id",
                 element: <CoursesDetails />,
             },
 
@@ -100,8 +100,7 @@ export const router = createBrowserRouter([
             },
 
             {
-
-                path: "category/:category/:subcategory",
+                path: "courses-details/:id",
                 element: <CoursesDetails />,
             },
 
@@ -166,13 +165,14 @@ export const router = createBrowserRouter([
                 element: <CoursesPage />
             },
             {
+                path: 'courses/create-course',
+                element: <CreateCourse />
+            },
+            {
                 path: 'courses/view/:id',
                 element: <ViewCourses />
             },
-            {
-                path: 'courses/add',
-                element: <AddQuestions />
-            },
+
             {
                 path: 'teachers',
                 element: <Teacher />

@@ -115,7 +115,7 @@ const PaidStudent = () => {
                 Totalpageprops={totalPages}
                 per_page={per_page}
                 totalitems={totalitems}
-                route='/dashboard/student'
+                route='/dashboard/paid-student'
             />
         </>
 

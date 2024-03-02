@@ -4,18 +4,18 @@ import useCategoryData from '../../hooks/useCategoryData';
 import { Dropdown } from 'react-bootstrap';
 import { callApi } from '../../utilities/functions';
 
-const CreateCategoryModal = ({ visible, onCancel, setLoading, refetchCategories }) => {
+const AddModuleModal = ({ visible, onCancel, setLoading, refetchCategories }) => {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
         console.log(values);
         try {
             setLoading(true);
-            const res = await callApi('POST', "/api/courses/categories", values);
+            const res = await callApi('POST', "/api/modules", values);
             form.resetFields();
             setLoading(false);
             refetchCategories();
-            onCancel(); // Close the modal after successful submission
+            onCancel();
         } catch (error) {
             console.error("Error occurred:", error);
             setLoading(false);
@@ -41,14 +41,14 @@ const CreateCategoryModal = ({ visible, onCancel, setLoading, refetchCategories 
                     });
             }}
         >
-            <Form form={form} layout="vertical" name="create_category_form">
+            <Form form={form} layout="vertical" name="module_name">
                 <Form.Item
-                    name="category_name"
-                    label="Category Name"
+                    name="module_name"
+                    label="Module Name"
                     rules={[
                         {
                             required: true,
-                            message: 'Please enter the category name!',
+                            message: 'Please enter the Module name!',
                         },
                     ]}
                 >
@@ -105,9 +105,6 @@ const CourseCategory = () => {
                 refetchCategories={refetch}
             />
 
-
-
-
             <div className='table-responsive'>
                 <table className="table table-striped">
                     <thead>
@@ -148,4 +145,4 @@ const CourseCategory = () => {
     );
 };
 
-export default CourseCategory;
+export default AddModuleModal

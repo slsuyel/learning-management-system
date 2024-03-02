@@ -4,6 +4,7 @@ import { Button, Modal } from 'antd';
 import { Dropdown } from 'react-bootstrap';
 import CourseCurriculum from '../../StudentsDashboard/CourseCurriculum';
 import Loader from '../../utilities/Loader';
+import { Link } from 'react-router-dom';
 
 const CoursesPage = () => {
     const [selectedCourses, setSelectedCourses] = useState(null);
@@ -43,6 +44,9 @@ const CoursesPage = () => {
         <div>
             <h1>Course List</h1>
 
+            <Link to={'/dashboard/courses/create-course'}> Add Course </Link>
+
+
             <div className="table-responsive">
                 <table className="table table-bordered table-striped">
                     <thead>
@@ -71,6 +75,9 @@ const CoursesPage = () => {
                                 <td>Category</td>
                                 <td>
                                     <Button onClick={() => handleCurriculm(course.modules)}>View Modules</Button>
+                                </td>
+                                <td>
+                                    <Button onClick={() => handleCurriculm(course.modules)}>Add Modules</Button>
                                 </td>
 
 

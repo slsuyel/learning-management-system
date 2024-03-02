@@ -4,11 +4,19 @@ import '../Styles/StuDashboard.css';
 import useCategoryData from '../../hooks/useCategoryData';
 import useAllCourses from '../../hooks/useAllCourses';
 import Loader from '../../utilities/Loader';
+import useStudent from '../../hooks/useStudent';
 
 const AllCourses = () => {
+    const id = localStorage.getItem("studentId")
+    const { studentData, isLoading } = useStudent(id, `/api/students/profile`)
+
+
     const { coursesData, isLoading: coursesLoading } = useAllCourses();
     const { categories, isLoading: categoryLoading } = useCategoryData();
     const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+
+    console.log(studentData);
+
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
@@ -46,9 +54,9 @@ const AllCourses = () => {
                         coursesData &&
                         coursesData.map(course => (
                             course.course_category_id === selectedCategory.id && (
-                                <Link to={`/user-db/payment/${course.id}`} key={course.id} className='p-0 '>
+                                <Link to={`/courses-details/${course.id}`} key={course.id} className='p-0 '>
 
-                                    {console.log(course)}
+                                    {/* {console.log(course)} */}
 
                                     <div className="order_details">
                                         <div className="detail">

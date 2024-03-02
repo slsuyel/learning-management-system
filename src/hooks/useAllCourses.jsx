@@ -8,8 +8,8 @@ const useAllCourses = (id) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await callApi("GET", `/api/courses`);
-                setData(response.data.data);
+                const response = await callApi("GET", `/api/courses?type=courselist`);
+                setData(response.data);
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching student data:', error);

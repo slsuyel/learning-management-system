@@ -35,7 +35,11 @@ const StudentDashboardLayout = () => {
                     <StuNavbar />
                 </Header>
                 <Content
-                    style={{ margin: "24px 0px 0" }}
+                    style={{
+                        margin: "24px 0px 0",
+                        background: "rgb(198,231,226)",
+                        background: "linear-gradient(11deg, rgba(198,231,226,1) 0%, rgba(229,231,232,1) 87%, rgba(197,197,198,1) 100%)"
+                    }}
                     className={`${!theme ? "dark " : ""}`}
                 >
                     <div
