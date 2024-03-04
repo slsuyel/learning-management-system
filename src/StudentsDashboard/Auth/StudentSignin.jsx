@@ -12,6 +12,7 @@ export default function StudentSignin() {
   const location = useLocation();
   const [founder_email, setFounder_email] = useState('');
   const [password, setPassword] = useState('');
+
   const from = location.state?.from?.pathname || "/user-db";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("")

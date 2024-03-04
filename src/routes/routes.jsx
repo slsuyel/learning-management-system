@@ -41,6 +41,8 @@ import CoursesPage from "../pages/Question/CoursesPage";
 import CourseCategory from "../pages/CourseCategory/CourseCategory";
 import MyCoursesPage from "../StudentsDashboard/StuDashboard/MyCourses/MyCoursesPage";
 import CreateCourse from "../pages/Question/CreateCourse";
+import PaymentResult from "../StudentsDashboard/Payment/PaymentResult";
+import AddClass from "../pages/Question/Class/AddClass";
 
 export const router = createBrowserRouter([
     {
@@ -132,6 +134,10 @@ export const router = createBrowserRouter([
                 path: "payment/:id",
                 element: <PayNow />,
             },
+            {
+                path: "payment/success/:id",
+                element: <PaymentResult />,
+            },
 
         ],
     },
@@ -188,6 +194,10 @@ export const router = createBrowserRouter([
             {
                 path: 'category',
                 element: <CourseCategory />
+            },
+            {
+                path: 'add-class',
+                element: <AddClass />
             },
             {
                 path: 'batches',

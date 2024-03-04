@@ -7,6 +7,7 @@ import { HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import CourseCurriculum from '../CourseCurriculum';
 import useSingleCourse from '../../hooks/useSingleCourse';
 import Loader from '../../utilities/Loader';
+import BackBtn from './../../components/ui/BackBtn';
 
 
 const CoursesDetails = () => {
@@ -20,7 +21,14 @@ const CoursesDetails = () => {
         return <Loader />
     }
     return (
+
         <section>
+            <div className='fs-4 text-custom'>
+                <BackBtn />
+            </div>
+
+
+
             <div className=" col-md-8 mx-auto mb-3 mb-5">
                 <video controls width="100%" >
                     <source src={details?.aboutVideo} type="video/mp4" />

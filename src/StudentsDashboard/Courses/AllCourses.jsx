@@ -15,14 +15,14 @@ const AllCourses = () => {
     const { categories, isLoading: categoryLoading } = useCategoryData();
     const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
-    console.log(studentData);
+
 
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
     };
 
-    if (categoryLoading || categoryLoading) {
+    if (isLoading || categoryLoading || coursesLoading) {
         return <Loader />
     }
 
@@ -54,9 +54,7 @@ const AllCourses = () => {
                         coursesData &&
                         coursesData.map(course => (
                             course.course_category_id === selectedCategory.id && (
-                                <Link to={`/courses-details/${course.id}`} key={course.id} className='p-0 '>
-
-                                    {/* {console.log(course)} */}
+                                <Link to={studentData.status == 401 ? `/courses-details/${course.id}` : `/user-db/courses-details/${course.id}`} key={course.id} className='p-0 '>
 
                                     <div className="order_details">
                                         <div className="detail">
@@ -67,15 +65,13 @@ const AllCourses = () => {
                                         <div className="order_details_description border-0">
                                             <div className="data">
                                                 <h3>{course.course_name}</h3>
-                                                <p>Tirthendu Halder Rana</p>
+                                                <p>{course.instructor || "instructor"}</p>
                                             </div>
                                             <div className="order_details_price">
-                                                <p>১১৯৯ টাকা</p>
+                                                <p>{course.price || 0} টাকা</p>
                                             </div>
                                         </div>
                                     </div>
-
-
 
                                 </Link>
                             )

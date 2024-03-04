@@ -46,7 +46,7 @@ const StudentDashboardLayout = () => {
                         style={{
                             padding: 24,
                             minHeight: 360,
-                            marginTop: "50px",
+                            marginTop: "55px",
                         }}
                     >
                         <Outlet />

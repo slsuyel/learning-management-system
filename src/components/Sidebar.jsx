@@ -62,6 +62,13 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/dashboard/add-class" className="nav-link">
+                  <i className="nav-icon fa-solid fa-file-circle-question"></i>
+                  <p className='text-white'>Add class</p>
+                </Link>
+              </li>
+
+              <li className="nav-item">
                 <Link to="/dashboard/category" className="nav-link">
                   <i className="nav-icon fa-solid fa-file-circle-question"></i>
                   <p className='text-white'>Category</p>

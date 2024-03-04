@@ -7,12 +7,16 @@ import Loader from '../../utilities/Loader';
 import { Link } from 'react-router-dom';
 import AddModuleModal from '../../components/Modals/AddModuleModal';
 import { callApi } from '../../utilities/functions';
+;
 
 const CoursesPage = () => {
     const [selectedCourses, setSelectedCourses] = useState(null);
     const { coursesData, refetch, isLoading } = useAllCourses()
     const [addModule, setAddModule] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedModule, setSelectedModule] = useState([]);
+    const [loader, setLoader] = useState(false);
+
 
     const handleOk = () => {
         setIsModalOpen(false);
@@ -33,9 +37,13 @@ const CoursesPage = () => {
             refetch()
         }
     };
-    const handleCurriculm = (data) => {
+    const handleCurriculm = async (data) => {
+        setLoader(true)
+        const res = await callApi('get', `/api/get/courses/${data.id}`)
+        setSelectedModule(res.data.modules)
         setIsModalOpen(true);
-        setSelectedCourses(data)
+        setLoader(false)
+
     };
 
     const handleAddModule = (data) => {
@@ -64,17 +72,12 @@ const CoursesPage = () => {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Category</th>
 
-                            <th>Modules</th>
                             <th>View Modules</th>
+                            <th>Add Module</th>
                             <th>Instructor</th>
                             <th>Price</th>
                             <th>Discount</th>
-                            {/* <th className='hidden-on-mobile'>Outcomes</th>
-                            <th className='hidden-on-mobile'>Requirements</th>
-                            <th className='hidden-on-mobile'>Audience</th>
-                            <th className='hidden-on-mobile'>Rating</th> */}
                             <th className=''>Action</th>
                         </tr>
                     </thead>
@@ -85,18 +88,24 @@ const CoursesPage = () => {
 
                             <tr key={course.id}>
                                 <td>{course.course_name}</td>
-                                <td>Category</td>
+
                                 <td>
-                                    <Button onClick={() => handleCurriculm(course)}>View Modules</Button>
+                                    <Button disabled={loader} onClick={() => handleCurriculm(course)}>
+                                        {loader ? 'Please wait' : 'View Modules'}
+                                    </Button>
                                 </td>
                                 <td>
                                     <Button onClick={() => handleAddModule(course)}>Add Modules</Button>
                                 </td>
 
 
-                                <td>Instructor</td>
-                                <td>Price</td>
-                                <td>Discount</td>
+                                <td>{course?.instructor}</td>
+                                <td>
+                                    <p className='font-italic text-center text-sm mb-0'>  {course.previous_price}</p>
+                                    <p className='fw-bold mb-0 text-center'>{course?.price}</p>
+
+                                </td>
+                                <td>{course?.discount}%</td>
 
 
 
@@ -105,6 +114,11 @@ const CoursesPage = () => {
                                         Action
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
+
+
+                                        <Link className="dropdown-item" to={`/courses-details/${course.id}`}>View
+                                        </Link>
+
 
                                         <button className="dropdown-item" onClick={() => handleEdit(course.id)}>Edit</button>
 
@@ -120,7 +134,7 @@ const CoursesPage = () => {
 
 
             <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <CourseCurriculum selectedCourses={selectedCourses} />
+                <CourseCurriculum modules={selectedModule} />
             </Modal>
             {addModule && <AddModuleModal addModule={addModule} setAddModule={setAddModule} course={selectedCourses} />}
 

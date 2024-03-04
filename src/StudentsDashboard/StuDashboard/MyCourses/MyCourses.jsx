@@ -229,7 +229,8 @@ const MyCourses = () => {
                                                         <Button onClick={() => handleVideoClick(video)} className='text-start w-100 my-1'>
                                                             <div className='d-flex fs-6 justify-content-between'>
                                                                 <span><i className="fa-solid fa-circle-check text-success"></i></span> <span>{video.video_name}</span>
-                                                                <span className='my-auto text-cyan text-sm'>{video.video_url}</span>
+                                                                <span className='my
+                                                                -auto text-cyan text-sm'>2 minute</span>
                                                             </div>
                                                         </Button>
                                                     </th>

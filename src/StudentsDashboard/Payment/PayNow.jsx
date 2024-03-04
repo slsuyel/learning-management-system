@@ -4,15 +4,42 @@ import bkash from '../../assets/icons/bKash.svg'
 import nagad from '../../assets/icons/nagad.png'
 import { Button } from 'antd';
 import { useParams } from 'react-router-dom';
+import BackBtn from '../../components/ui/BackBtn';
+import useSingleCourse from '../../hooks/useSingleCourse';
+
+import { callApi } from '../../utilities/functions';
+
 const PayNow = () => {
-
     const { id } = useParams()
-    console.log(id);
+    const [method, setMethod] = useState('')
+    const [loading, setLoading] = useState(false)
 
-    const [method, setMethod] = useState(null)
+    const { details, isLoading } = useSingleCourse(id)
+
+    const amount = Number(details.price)
+    const handlePayment = async () => {
+        setLoading(true);
+        if (method == "bkash") {
+            const bkashPay = await callApi("post", "/api/create/payment", { amount: amount })
+            window.location.href = bkashPay.bkashURL;
+            setLoading(false)
+        }
+        else {
+            alert("please use bkash")
+            setLoading(false)
+        }
+        setLoading(false)
+    }
+
+    console.log(details);
 
     return (
         <section id="checkout_courses" >
+            <div className='fs-4 text-custom'>
+                <BackBtn />
+            </div>
+
+
             <div className="container ">
 
                 <div className="row">
@@ -30,11 +57,11 @@ const PayNow = () => {
                                 </div>
                                 <div className="order_details_description">
                                     <div className="data">
-                                        <h3>MS PowerPoint Advanced Course</h3>
-                                        <p>Tirthendu Halder Rana</p>
+                                        <h3>{details?.course_name}</h3>
+                                        <p>{details?.instructor}</p>
                                     </div>
                                     <div className="order_details_price">
-                                        <p>১১৯৯ টাকা</p>
+                                        <p>{details.price} টাকা</p>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +73,7 @@ const PayNow = () => {
                             <div >
                                 <div className="cart_prices">
                                     <p className="title">কোর্স মূল্য</p>
-                                    <p className="price">১১৯৯ টাকা</p>
+                                    <p className="price">{details.price} টাকা</p>
                                 </div>
                             </div>
                             <h4 className="coupon_title">কুপণ</h4>
@@ -60,7 +87,7 @@ const PayNow = () => {
                             <hr className='mrhr' style={{ margin: '0px' }} />
                             <div className="cart_prices">
                                 <p className="title"><b >মোট মূল্য</b></p>
-                                <p className="price">১১৯৯ টাকা</p>
+                                <p className="price">{details.price} টাকা</p>
                             </div>
                             <div >
                                 <div className="checkout_header mt-3 mb-2 mb-0">
@@ -69,21 +96,21 @@ const PayNow = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-6">
-                                        <button onClick={() => setMethod('bkash')} className={`border-1 border-secondary-subtle btn p-1 rounded-3 ${method == 'bkash' ? 'bg-success-subtle' : ''}`}>
+                                        <button onClick={() => setMethod('bkash')} className={`border-1 border-secondary-subtle btn p-1 rounded-3 ${method == 'bkash' ? 'bg-body-tertiary' : ''}`}>
                                             <img src={bkash} alt="" />
                                         </button>
                                     </div>
                                     <div className="col-6">
-                                        <button onClick={() => setMethod('nagad')} className={`border-1 border-secondary-subtle btn p-1 rounded-3 ${method == 'nagad' ? 'bg-success-subtle' : ''}`}>
+                                        <button onClick={() => setMethod('nagad')} className={`border-1 border-secondary-subtle btn p-1 rounded-3 ${method == 'nagad' ? 'bg-body-tertiary' : ''}`}>
                                             <img src={nagad} alt="" width={120} />
                                         </button>
                                     </div>
                                 </div>
 
                             </div>
-                            <Button disabled={!method} className="d-flex justify-content-between">
-                                <span >পেমেন্ট করুন</span>
-                                <span className="btn_amount_font">১১৯৯ টাকা</span>
+                            <Button onClick={() => handlePayment(method)} disabled={!method || isLoading || loading || amount == 0} className="d-flex justify-content-between">
+                                <span >{loading ? 'Please wait' : 'পেমেন্ট করুন'}</span>
+                                <span className="btn_amount_font">{details.price || 0} টাকা</span>
                             </Button>
                         </div>
                     </div>

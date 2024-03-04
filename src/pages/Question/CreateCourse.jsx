@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Select, InputNumber } from 'antd';
+import { Form, Input, Button, Select, InputNumber, Upload } from 'antd';
 import useCategoryData from '../../hooks/useCategoryData';
 import ReactQuill from 'react-quill';
 import { callApi } from '../../utilities/functions';
-
+import { UploadOutlined } from '@ant-design/icons';
 const { Option } = Select;
-
 const CreateCourse = () => {
     const { categories, refetch, isLoading, isError } = useCategoryData();
     const [aboutVideo, setAboutVideo] = useState('');
@@ -15,6 +14,7 @@ const CreateCourse = () => {
     const [requirements, setRequirements] = useState('');
     const [features, setFeatures] = useState('');
     const [loader, setLoader] = useState(false);
+    const [imageUrl, setImageUrl] = useState(null);
 
 
     const onFinish = (values) => {
@@ -30,6 +30,15 @@ const CreateCourse = () => {
         setLoader(false)
     };
 
+
+    const handleImageChange = async (e) => {
+        const file = e.target.files[0];
+
+        if (!file) return;
+
+        const blobURL = URL.createObjectURL(file);
+        setImageUrl(blobURL);
+    };
 
 
     const modules = {
@@ -166,11 +175,6 @@ const CreateCourse = () => {
                     <ReactQuill modules={modules} style={{ height: '200px', paddingBottom: '61px' }} theme="snow" value={requirements} onChange={setRequirements} />
                 </Form.Item>
 
-
-
-
-
-
                 <Form.Item
                     label="What You Learn"
                     name="whatYouLearn"
@@ -187,12 +191,30 @@ const CreateCourse = () => {
                     <ReactQuill modules={modules} style={{ height: '200px', paddingBottom: '61px' }} theme="snow" value={features} onChange={setFeatures} />
                 </Form.Item>
 
+            </div>
+            <div className='align-items-end justify-content-between mx-auto row'>
+                <Form.Item label="Thumbnail" className='col-md-6'>
+                    <div className={imageUrl ? ' border-0' : "fileUpload"}>
+                        {imageUrl ? (
+                            <div>
+
+                                <img className='img-fluid' src={imageUrl} alt="Uploaded" />
+                            </div>
+                        ) : <>
+                            <label htmlFor="fileupload" id="fileChoiceLable">
+                                <span className='mx-3 text-warning-emphasis text-wrap text-center'>Click Here to Upload Thumbnail</span>
+                            </label>
+                            <input className='opacity-0 p-5' type="file" id="fileupload" onChange={handleImageChange} accept="image/*" style={{ display: 'none' }} /></>}
+                    </div>
+                </Form.Item>
+
+
+
                 <Form.Item className='col-md-4'>
                     <Button disabled={loader} type="primary" htmlType="submit">
                         Submit
                     </Button>
                 </Form.Item>
-
             </div>
         </Form>
 
