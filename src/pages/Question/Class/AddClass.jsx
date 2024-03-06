@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Select, Input, Button } from 'antd';
-
-
+import useAllCourses from '../../../hooks/useAllCourses';
+import { callApi } from '../../../utilities/functions';
 const { Option } = Select;
 
 const AddClass = () => {
+    const { coursesData, isLoading } = useAllCourses();
+    const [selectedCourse, setSelectedCourse] = useState(null);
+    const [modules, setModules] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     const [formData, setFormData] = useState({
-        course: '',
-        module: '',
-        videoTitle: '',
+        course_module_id: '',
+        video_name: '',
+        video_url: '',
         videoFile: null
     });
 
@@ -19,9 +24,34 @@ const AddClass = () => {
         });
     };
 
-    const handleSubmit = () => {
-        console.log(formData);
+    const handleSubmit = async () => {
+        if (!formData.course_module_id || !formData.video_name || !formData.video_url) {
+            alert('Fill up all fields')
+            return
+        }
+        setLoading(true)
+        const res = await callApi('post', '/api/course/videos', formData)
+        if (res.data.video_name) {
+            alert("Success")
+            setLoading(false)
+        }
+        setLoading(false)
     };
+
+    const handleChangeCourse = (value) => {
+        setSelectedCourse(value);
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await callApi('get', '/api/modules');
+            setModules(res.data.data);
+        };
+
+        fetchData();
+    }, []);
+
+
 
     return (
         <div className="container">
@@ -31,32 +61,47 @@ const AddClass = () => {
                     <Select
                         style={{ width: '100%', marginBottom: '20px' }}
                         placeholder="Select Course"
-                        onChange={(value) => handleChange('course', value)}
+                        onChange={handleChangeCourse}
+                        value={selectedCourse}
                     >
-                        <Option value="course1">Course 1</Option>
-                        <Option value="course2">Course 2</Option>
-                        <Option value="course3">Course 3</Option>
+                        {coursesData.map((c) => (
+                            <Option key={c.id} value={c.id}>
+                                {c.course_name}
+                            </Option>
+                        ))}
                     </Select>
                     <Select
                         style={{ width: '100%', marginBottom: '20px' }}
                         placeholder="Select Module"
-                        onChange={(value) => handleChange('module', value)}
+                        onChange={(value) => handleChange('course_module_id', value)} // Corrected key name
                     >
-                        <Option value="module1">Module 1</Option>
-                        <Option value="module2">Module 2</Option>
-                        <Option value="module3">Module 3</Option>
+                        {modules
+                            .filter((m) => m.course_id === selectedCourse)
+                            .map((module) => (
+                                <Option key={module.id} value={module.id}>
+                                    {module.module_name}
+                                </Option>
+                            ))}
                     </Select>
                     <Input
+                        required
                         style={{ marginBottom: '20px' }}
                         placeholder="Video Title"
-                        onChange={(e) => handleChange('videoTitle', e.target.value)}
+                        onChange={(e) => handleChange('video_name', e.target.value)}
+                    />
+                    <Input
+                        required
+                        style={{ marginBottom: '20px' }}
+                        placeholder="Video Url"
+                        onChange={(e) => handleChange('video_url', e.target.value)}
                     />
                     <input
+                        required
                         type="file"
                         style={{ marginBottom: '20px' }}
                         onChange={(e) => handleChange('videoFile', e.target.files[0])}
                     />
-                    <Button type="primary" onClick={handleSubmit}>Upload Video</Button>
+                    <Button type="primary" disabled={loading} onClick={handleSubmit}>Upload Video</Button>
                 </div>
             </div>
         </div>

@@ -8,19 +8,21 @@ import BackBtn from '../../components/ui/BackBtn';
 import useSingleCourse from '../../hooks/useSingleCourse';
 
 import { callApi } from '../../utilities/functions';
-
+/* {paymentID: 'TR00112qOFakJ1709659245190', bkashURL: 'https://sandbox.payment.bkash.com/?paymentId=TR001…2-81709659245190&mode=0011&apiVersion=v1.2.0-beta'} */
 const PayNow = () => {
     const { id } = useParams()
+    const sid = localStorage.getItem("studentId")
     const [method, setMethod] = useState('')
     const [loading, setLoading] = useState(false)
-
     const { details, isLoading } = useSingleCourse(id)
-
     const amount = Number(details.price)
+
     const handlePayment = async () => {
         setLoading(true);
-        if (method == "bkash") {
-            const bkashPay = await callApi("post", "/api/create/payment", { amount: amount })
+        console.log({ amount, sid });
+        if (method == "bkash" && amount && sid) {
+            const bkashPay = await callApi("post", "/api/create/payment", { amount, student_id: sid, callbackURL: "http://localhost:5173/waiting", course_id: details.id },)
+            console.log(bkashPay);
             window.location.href = bkashPay.bkashURL;
             setLoading(false)
         }
@@ -31,8 +33,7 @@ const PayNow = () => {
         setLoading(false)
     }
 
-    console.log(details);
-
+    console.log(details.id);
     return (
         <section id="checkout_courses" >
             <div className='fs-4 text-custom'>

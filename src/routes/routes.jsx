@@ -43,6 +43,7 @@ import MyCoursesPage from "../StudentsDashboard/StuDashboard/MyCourses/MyCourses
 import CreateCourse from "../pages/Question/CreateCourse";
 import PaymentResult from "../StudentsDashboard/Payment/PaymentResult";
 import AddClass from "../pages/Question/Class/AddClass";
+import Waiting from "../StudentsDashboard/Payment/Waiting";
 
 export const router = createBrowserRouter([
     {
@@ -82,7 +83,14 @@ export const router = createBrowserRouter([
                 path: "courses-details/:id",
                 element: <CoursesDetails />,
             },
-
+            {
+                path: 'waiting',
+                element: <Waiting />
+            },
+            {
+                path: 'success/:paymentID',
+                element: <PaymentResult />
+            },
 
         ],
     },
@@ -134,10 +142,12 @@ export const router = createBrowserRouter([
                 path: "payment/:id",
                 element: <PayNow />,
             },
-            {
-                path: "payment/success/:id",
-                element: <PaymentResult />,
-            },
+            // {
+            //     path: "payment/res/:id",
+            //     element: <PaymentResult />,
+            // },
+
+
 
         ],
     },
@@ -211,6 +221,7 @@ export const router = createBrowserRouter([
                 path: 'affiliate',
                 element: <Affiliate />
             },
+
 
         ]
     }
