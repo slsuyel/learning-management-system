@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { callApi } from '../../utilities/functions';
 
-const Waiting = () => {
+const EkapayWaiting = () => {
+
     const location = useLocation();
     const navigate = useNavigate()
 
@@ -18,7 +18,7 @@ const Waiting = () => {
                 const res = await callApi('Post', "/api/re/call/ekpay/ipn", { trnx_id: transId });
                 console.log(res);
                 // if (res.transactionStatus == 'Completed') {
-                //     navigate(`/success/${res.paymentID}`)
+                navigate(`/success/${res.paymentID}`)
                 // }
                 // else {
                 //     navigate('/')
@@ -34,26 +34,7 @@ const Waiting = () => {
         fetchData();
     }, [transId]);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const res = await callApi('Post', "/api/check/payment", { paymentID: paymentID });
-    //             if (res.transactionStatus == 'Completed') {
-    //                 navigate(`/success/${res.paymentID}`)
-    //             }
-    //             else {
-    //                 navigate('/')
-    //             }
-    //             setLoading(false);
 
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, [paymentID]);
 
     return (
         <div>
@@ -62,11 +43,12 @@ const Waiting = () => {
             ) : (
                 <div className='d-flex justify-content-center'>
 
-                    Waiting-------------{transId}
+                    Payment Success <br />
+                    transId is = {transId}
                 </div>
             )}
         </div>
     );
 };
 
-export default Waiting;
+export default EkapayWaiting;

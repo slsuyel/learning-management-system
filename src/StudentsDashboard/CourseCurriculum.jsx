@@ -6,7 +6,7 @@ const { Panel } = Collapse;
 const CourseCurriculum = ({ modules }) => {
     const [selectedVideo, setSelectedVideo] = useState('');
 
-    console.log(modules);
+    // console.log(modules);
 
 
     useEffect(() => {

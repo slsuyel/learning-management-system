@@ -44,6 +44,8 @@ import CreateCourse from "../pages/Question/CreateCourse";
 import PaymentResult from "../StudentsDashboard/Payment/PaymentResult";
 import AddClass from "../pages/Question/Class/AddClass";
 import Waiting from "../StudentsDashboard/Payment/Waiting";
+import EkpaySuccess from "../StudentsDashboard/Payment/EkpaySuccess";
+import EkapayWaiting from "../StudentsDashboard/Payment/Ekpay/EkapayWaiting";
 
 export const router = createBrowserRouter([
     {
@@ -57,7 +59,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'services',
-                element: <Services />
+                element: <Services />,
+
             },
             {
                 path: 'about',
@@ -84,13 +87,17 @@ export const router = createBrowserRouter([
                 element: <CoursesDetails />,
             },
             {
-                path: 'waiting',
-                element: <Waiting />
+                path: 'waiting/success',
+                element: <EkapayWaiting />
             },
-            {
-                path: 'success/:paymentID',
-                element: <PaymentResult />
-            },
+            // {
+            //     path: 'waiting/success',
+            //     element: <PaymentResult />
+            // },
+            // {
+            //     path: 'waiting',
+            //     element: <EkpaySuccess />
+            // }
 
         ],
     },

@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import '../Styles/StuDashboard.css'
 import bkash from '../../assets/icons/bKash.svg'
 import nagad from '../../assets/icons/nagad.png'
+import ekpay from '../../assets/icons/ekpay.png'
 import { Button } from 'antd';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import BackBtn from '../../components/ui/BackBtn';
 import useSingleCourse from '../../hooks/useSingleCourse';
 
 import { callApi } from '../../utilities/functions';
-/* {paymentID: 'TR00112qOFakJ1709659245190', bkashURL: 'https://sandbox.payment.bkash.com/?paymentId=TR001…2-81709659245190&mode=0011&apiVersion=v1.2.0-beta'} */
 const PayNow = () => {
+    const currentUrl = window.location.href;
+    const domain = currentUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/g)[0];
+
+
     const { id } = useParams()
     const sid = localStorage.getItem("studentId")
-    const [method, setMethod] = useState('')
+    const [method, setMethod] = useState(null)
     const [loading, setLoading] = useState(false)
     const { details, isLoading } = useSingleCourse(id)
     const amount = Number(details.price)
@@ -20,20 +24,21 @@ const PayNow = () => {
     const handlePayment = async () => {
         setLoading(true);
         console.log({ amount, sid });
-        if (method == "bkash" && amount && sid) {
-            const bkashPay = await callApi("post", "/api/create/payment", { amount, student_id: sid, callbackURL: "http://localhost:5173/waiting", course_id: details.id },)
+        /* if (method == "bkash" && amount && sid) {
+            console.log(domain);
+            const bkashPay = await callApi("post", "/api/create/payment", { amount, student_id: sid, callbackURL: `${`https://lms-2023.netlify.app`}/waiting`, course_id: details.id },)
             console.log(bkashPay);
             window.location.href = bkashPay.bkashURL;
             setLoading(false)
         }
-        else {
-            alert("please use bkash")
+        else */
+        if (method == "ekpay" && amount && sid) {
+            const ekpay = await callApi('post', '/api/create/payment/ekpay', { amount, student_id: sid, callbackURL: `https://lms-2023.netlify.app/waiting`, course_id: details.id })
+            window.location.href = ekpay;
             setLoading(false)
         }
-        setLoading(false)
     }
 
-    console.log(details.id);
     return (
         <section id="checkout_courses" >
             <div className='fs-4 text-custom'>
@@ -93,17 +98,23 @@ const PayNow = () => {
                             <div >
                                 <div className="checkout_header mt-3 mb-2 mb-0">
                                     <h3 >পেমেন্ট মেথড সিলেক্ট করুন</h3>
-                                    <p >যে কোন একটি পেমেন্ট মেথড সিলেক্ট করুন</p>
+                                    <p >পেমেন্ট মেথড সিলেক্ট করুন</p>
                                 </div>
                                 <div className="row">
-                                    <div className="col-6">
+                                    {/* <div className="col-6">
                                         <button onClick={() => setMethod('bkash')} className={`border-1 border-secondary-subtle btn p-1 rounded-3 ${method == 'bkash' ? 'bg-body-tertiary' : ''}`}>
-                                            <img src={bkash} alt="" />
+                                            <img width={125} src={bkash} alt="" />
                                         </button>
-                                    </div>
-                                    <div className="col-6">
+                                    </div> */}
+
+                                    {/* <div className="col-6">
                                         <button onClick={() => setMethod('nagad')} className={`border-1 border-secondary-subtle btn p-1 rounded-3 ${method == 'nagad' ? 'bg-body-tertiary' : ''}`}>
                                             <img src={nagad} alt="" width={120} />
+                                        </button>
+                                    </div> */}
+                                    <div className="col-6">
+                                        <button onClick={() => setMethod('ekpay')} className={`border-1 border-secondary-subtle btn p-1 rounded-3 ${method == 'ekpay' ? 'bg-body-tertiary' : ''}`}>
+                                            <img width={125} src={ekpay} alt="" />
                                         </button>
                                     </div>
                                 </div>

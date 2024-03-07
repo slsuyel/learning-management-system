@@ -8,7 +8,6 @@ import ScrollToTop from "../../components/ScrollToTop";
 const StudentDashboardLayout = () => {
     const theme = false
 
-
     return (
         <ScrollToTop><Layout style={{ height: "100%", width: '100%' }}>
             <StuSidebar />
@@ -52,7 +51,7 @@ const StudentDashboardLayout = () => {
                         <Outlet />
                     </div>
                 </Content>
-                <Footer className={`${!theme ? "dark border-top" : ""}`}>
+                <Footer >
                     <footer>
                         <div className="float-right d-none d-sm-inline">Version 1.0.0 </div>
                         <strong>
