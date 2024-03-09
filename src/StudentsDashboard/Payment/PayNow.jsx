@@ -9,10 +9,10 @@ import BackBtn from '../../components/ui/BackBtn';
 import useSingleCourse from '../../hooks/useSingleCourse';
 
 import { callApi } from '../../utilities/functions';
+import useStudent from '../../hooks/useStudent';
 const PayNow = () => {
     const currentUrl = window.location.href;
     const domain = currentUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/g)[0];
-
 
     const { id } = useParams()
     const sid = localStorage.getItem("studentId")
@@ -20,6 +20,13 @@ const PayNow = () => {
     const [loading, setLoading] = useState(false)
     const { details, isLoading } = useSingleCourse(id)
     const amount = Number(details.price)
+
+    const { studentData, isLoading: stLoading } = useStudent(sid, `/api/students/profile`)
+
+
+
+    console.log(studentData);
+
 
     const handlePayment = async () => {
         setLoading(true);

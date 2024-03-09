@@ -30,7 +30,7 @@ const AllCourses = () => {
 
     return (
         <div className='row mx-auto'>
-            <div className="courses-category col-md-8 my-2">
+            <div className="courses-category col-md-12 my-2">
 
                 <h3 className='fs-2'>সকল কোর্স</h3>
                 <p className='fs-5 me-3'>
@@ -47,7 +47,7 @@ const AllCourses = () => {
                 </div>
             </div>
 
-            <div className="col-md-4 my-2 ">
+            <div className="col-md-8 my-2 mx-auto">
 
                 <div className='courses-content'>
                     {selectedCategory &&
@@ -56,7 +56,7 @@ const AllCourses = () => {
                             course.course_category_id === selectedCategory.id && (
                                 <Link to={studentData.status == 401 ? `/courses-details/${course.id}` : `/user-db/courses-details/${course.id}`} key={course.id} className='p-0 '>
 
-                                    <div className="order_details">
+                                    <div className="order_details py-3">
                                         <div className="detail">
                                             <div className="detail-cap rounded">
                                                 <img src="https://api.brightskills.com/course/MS PowerPoint Advanced Course/558-X-364_Course-Banner_2-of-MS-PowerPoint-Advanced-Course.jpg" alt="" height="100%" />
@@ -64,10 +64,10 @@ const AllCourses = () => {
                                         </div>
                                         <div className="order_details_description border-0">
                                             <div className="data">
-                                                <h3>{course.course_name}</h3>
-                                                <p>{course.instructor || "instructor"}</p>
+                                                <h3 className='fs-2 mb-0'>{course.course_name}</h3>
+                                                <p className='fs-4 m-0 p-0'>{course.instructor || "instructor"}</p>
                                             </div>
-                                            <div className="order_details_price">
+                                            <div className="order_details_price bg-success-subtle fs-5 mb-0 p-2 rounded-4 text-danger">
                                                 <p>{course.price || 0} টাকা</p>
                                             </div>
                                         </div>

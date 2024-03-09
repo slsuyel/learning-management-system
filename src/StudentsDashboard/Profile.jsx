@@ -1,4 +1,5 @@
 
+import { Button } from 'antd';
 import useStudent from '../hooks/useStudent';
 import Loader from '../utilities/Loader';
 
@@ -76,11 +77,11 @@ const Profile = () => {
                                         <h6 className="mb-0"> Gender :	</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        {studentData.founder_gender}
+                                        {studentData.founder_gender || "N/A"}
                                     </div>
                                 </div>
                                 <hr />
-                                <div className="row">
+                                {/*         <div className="row">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">Company Name :	</h6>
                                     </div>
@@ -115,12 +116,12 @@ const Profile = () => {
                                         {studentData.formation_of_company}
                                     </div>
                                 </div>
-                                <hr />
+                                <hr /> */}
 
 
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <a className="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                        <Button>Edit</Button>
                                     </div>
                                 </div>
                             </div>

@@ -54,69 +54,69 @@ export default function StudentSignin() {
     <>
       {
         !authenticated ?
-          <div className="hold-transition login-page">
-            <div className="login-box">
-              <div className="login-logo">
-                <h3>Student Login</h3>
-              </div>
-              <div className="card">
-                <div className="card-body login-card-body">
-                  <p className="login-box-msg">Login in to start your session</p>
-                  <form onSubmit={handleSubmit}>
-                    <div className="input-group mb-3">
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Email"
-                        value={founder_email}
-                        onChange={(e) => setFounder_email(e.target.value)}
-                      />
-                      <div className="input-group-append">
-                        <div className="input-group-text">
-                          <span className="fas fa-envelope" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="input-group mb-3">
-                      <input
-                        type="password"
-                        className="form-control"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <div className="input-group-append">
-                        <div className="input-group-text">
-                          <span className="fas fa-lock" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-8">
-                      </div>
-                      <div className="col-4">
-                        <p className="text-danger"> {error}</p>
 
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          onClick={handleSubmit}
-                          disabled={isSubmitting}
-                        >
-                          {isSubmitting ? 'Loading...' : 'Sign In'}
-                        </button>
+          <div className="col-md-5 mx-auto">
+            <div className="login-logo">
+              <h3>Student Login</h3>
+            </div>
+            <div className="card">
+              <div className="card-body login-card-body">
+                <p className="login-box-msg">Login in to start your session</p>
+                <form onSubmit={handleSubmit}>
+                  <div className="input-group mb-3">
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Email"
+                      value={founder_email}
+                      onChange={(e) => setFounder_email(e.target.value)}
+                    />
+                    <div className="input-group-append">
+                      <div className="input-group-text">
+                        <span className="fas fa-envelope" />
                       </div>
                     </div>
-                  </form>
-                  <p className="mb-0 mt-2">
-                    <Link to={'/signup'} className="text-center text-decoration-none">
-                      Register a new account
-                    </Link>
-                  </p>
-                </div>
+                  </div>
+                  <div className="input-group mb-3">
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <div className="input-group-append">
+                      <div className="input-group-text rounded-0">
+                        <span className="fas fa-lock" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-8">
+                    </div>
+                    <div className="col-4">
+                      <p className="text-danger"> {error}</p>
+
+                      <button
+                        type="submit"
+                        className="btn btn-primary"
+                        onClick={handleSubmit}
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Loading...' : 'Sign In'}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <p className="mb-0 mt-2">
+                  <Link to={'/signup'} className="text-center text-decoration-none">
+                    Register a new account
+                  </Link>
+                </p>
               </div>
             </div>
-          </div> : (navigate("/user-db", { replace: true })
+          </div>
+          : (navigate("/user-db", { replace: true })
           )
       }
     </>

@@ -46,6 +46,7 @@ import AddClass from "../pages/Question/Class/AddClass";
 import Waiting from "../StudentsDashboard/Payment/Waiting";
 import EkpaySuccess from "../StudentsDashboard/Payment/EkpaySuccess";
 import EkapayWaiting from "../StudentsDashboard/Payment/Ekpay/EkapayWaiting";
+import AdminLayout from "../pages/NewAdminDb/AdminLayout";
 
 export const router = createBrowserRouter([
     {
@@ -160,7 +161,8 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <UserCheck><WithNavbar /></UserCheck>,
+        // element: <UserCheck><WithNavbar /></UserCheck>,
+        element: <UserCheck><AdminLayout /></UserCheck>,
         children: [
             {
                 path: '',

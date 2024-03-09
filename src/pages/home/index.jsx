@@ -36,7 +36,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="content">
+      {/* <div className="content">
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3">
@@ -89,7 +89,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className=" row">
         {/* sm="6" lg="6" xl="7" xxl="8 */}
         <div>

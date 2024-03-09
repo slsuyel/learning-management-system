@@ -34,71 +34,70 @@ export default function Signin() {
     }
     finally {
       setIsSubmitting(false);
-     
+
     }
   };
 
   return (
     <>
-      <div className="hold-transition login-page">
-        <div className="login-box">
-          <div className="login-logo">
-            <h3>Admin Login</h3>
-          </div>
-          <div className="card">
-            <div className="card-body login-card-body">
-              <p className="login-box-msg">Login in to start your session</p>
-              <form onSubmit={handleSubmit}>
-                <div className="input-group mb-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <div className="input-group-append">
-                    <div className="input-group-text">
-                      <span className="fas fa-envelope" />
-                    </div>
-                  </div>
-                </div>
-                <div className="input-group mb-3">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <div className="input-group-append">
-                    <div className="input-group-text">
-                      <span className="fas fa-lock" />
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-8">
-                  </div>
 
-                  <div className="col-4">
-                    <p className="text-danger"> {error}</p>
-                    <button
-                      type="submit"
-                      className="btn btn-primary"
-                      onClick={handleSubmit}
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Loading...' : 'Sign In'}
-                    </button>
+      <div className="col-md-5 mx-auto">
+        <div className="login-logo">
+          <h3>Admin Login</h3>
+        </div>
+        <div className="card row">
+          <div className="card-body">
+            <p className="login-box-msg">Login in to start your session</p>
+            <form onSubmit={handleSubmit}>
+              <div className="input-group mb-3">
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <div className="input-group-append">
+                  <div className="input-group-text">
+                    <span className="fas fa-envelope" />
                   </div>
                 </div>
-              </form>
+              </div>
+              <div className="input-group mb-3">
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <div className="input-group-append">
+                  <div className="input-group-text rounded-0">
+                    <span className="fas fa-lock" />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
 
-            </div>
+
+                <div className="col-4">
+                  <p className="text-danger"> {error}</p>
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Loading...' : 'Sign In'}
+                  </button>
+                </div>
+              </div>
+            </form>
+
           </div>
         </div>
       </div>
+
     </>
   );
 }

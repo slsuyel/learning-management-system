@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { callApi } from '../../utilities/functions';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import useLoggedIn from '../../hooks/useLoggedIn';
 import { toast } from 'react-toastify';
 import Loader from '../../utilities/Loader';
 
 const Signup = () => {
-
   const { authenticated, loading } = useLoggedIn();
   const navigate = useNavigate();
-
-
   const [loader, setLoader] = useState(false);
+  const [ref, setRef] = useState(null);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const referel = urlParams.get('ref');
+
+    setRef(referel)
+  }, []);
 
   const defaultValue = {
     attachment_file: 'n/a',
     company_name: 'na',
     location: 'na',
     business_category: 'na',
-    founder_gender: 'na',
+    founder_gender: 'N/A',
   }
 
   if (loading) {
@@ -55,13 +60,18 @@ const Signup = () => {
       {
         authenticated ? (
           navigate('/user-db', { replace: true })
-        ) : <>
-          <div className='row mx-auto'>
-            <Form className='col-md-6 mx-auto'
+        ) : <div className='row'>
+          <div className='border col-md-6 mx-auto p-4 rounded row shadow'>
+
+            <h1 className='fs-3 text-capitalize text-center text-success py-3'>SignUp for new students</h1>
+
+            <Form className=''
               name="signup_form"
               onFinish={onFinish}
+              layout='vertical'
             >
               <Form.Item
+                className='mb-3'
                 label=" Name"
                 name="founder_name"
                 rules={[{ required: true, message: 'Please enter  name!' }]}
@@ -70,6 +80,7 @@ const Signup = () => {
               </Form.Item>
 
               <Form.Item
+                className='mb-3'
                 label=" Email"
                 name="founder_email"
                 rules={[
@@ -81,6 +92,7 @@ const Signup = () => {
               </Form.Item>
 
               <Form.Item
+                className='mb-3'
                 label=" Phone"
                 name="founder_phone"
                 rules={[{ required: true, message: 'Please enter  phone number!' }]}
@@ -89,6 +101,18 @@ const Signup = () => {
               </Form.Item>
 
               <Form.Item
+
+                initialValue={ref}
+                className='mb-3'
+                label=" Referral "
+                name="ref_code"
+
+              >
+                <Input disabled={ref} />
+              </Form.Item>
+
+              <Form.Item
+                className='mb-3'
                 label="Password"
                 name="password"
                 rules={[{ required: true, message: 'Please enter a password!' }]}
@@ -96,13 +120,17 @@ const Signup = () => {
                 <Input.Password />
               </Form.Item>
 
-              <Form.Item>
+              <Form.Item
+                className='mb-3'>
                 <Button disabled={loader} type="primary" htmlType="submit">
                   Submit
                 </Button>
               </Form.Item>
             </Form>
-          </div></>
+
+            <p>Already have an account? <Link to='/student/signin'>Login here</Link> </p>
+
+          </div></div>
 
       }
     </>
