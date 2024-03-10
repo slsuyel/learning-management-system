@@ -6,17 +6,20 @@ import Others from './Others';
 import About from './About';
 import Team from '../pages/carousel/Team';
 import Feedback from '../pages/carousel/Feedback';
+import ArafatHome from './ArafatHome';
 
 const HomePage = () => {
     return (
-        <div>
-            <Hero />
+        <>
+
+            <ArafatHome />
+            {/* <Hero />
             <Partner />
             <Others />
             <Team />
             <About />
-            <Feedback />
-        </div>
+            <Feedback /> */}
+        </>
     );
 };
 

@@ -40,7 +40,7 @@ const PayNow = () => {
         }
         else */
         if (method == "ekpay" && amount && sid) {
-            const ekpay = await callApi('post', '/api/create/payment/ekpay', { amount, student_id: sid, callbackURL: `https://lms-2023.netlify.app/waiting`, course_id: details.id })
+            const ekpay = await callApi('post', '/api/create/payment/ekpay', { amount, student_id: sid, callbackURL: `https://s2a-e.shop/waiting`, course_id: details.id })
             window.location.href = ekpay;
             setLoading(false)
         }

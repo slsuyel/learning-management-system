@@ -1,11 +1,22 @@
 import axios from 'axios';
 import { baseUrl } from '../baseurl/BaseUrl';
-export const callApi = async (method, url, dataObj = [], headers = {}) => {
+export const callApi = async (method, url, dataObj = [], headers = {}, bUrl = true) => {
+
+  // if (bUrl) {
+  //   const apiUrl = `${baseUrl}${url}`
+  // }
+  // else {
+  //   const apiUrl = `${url}`
+  // }
+  const apiUrl = bUrl ? `${baseUrl}${url}` : `${url}`
+
+
+
   try {
     headers.Authorization = `Bearer ${localStorage.getItem("token")}`
     const response = await axios({
       method: method,
-      url: `${baseUrl}${url}`,
+      url: apiUrl,
       data: dataObj,
       headers: headers
     });

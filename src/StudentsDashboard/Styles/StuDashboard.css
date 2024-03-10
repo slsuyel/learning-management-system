@@ -170,7 +170,7 @@
 
 .order_details_price p {
     color: #575757;
-
+    margin-bottom: 0;
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;

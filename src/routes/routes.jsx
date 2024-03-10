@@ -47,6 +47,7 @@ import Waiting from "../StudentsDashboard/Payment/Waiting";
 import EkpaySuccess from "../StudentsDashboard/Payment/EkpaySuccess";
 import EkapayWaiting from "../StudentsDashboard/Payment/Ekpay/EkapayWaiting";
 import AdminLayout from "../pages/NewAdminDb/AdminLayout";
+import EditProfile from "../StudentsDashboard/EditProfile";
 
 export const router = createBrowserRouter([
     {
@@ -111,6 +112,10 @@ export const router = createBrowserRouter([
             {
                 path: "",
                 element: <Profile />,
+            },
+            {
+                path: "edit-profile",
+                element: <EditProfile />,
             },
             {
                 path: "courses",

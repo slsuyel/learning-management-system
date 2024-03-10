@@ -2,6 +2,7 @@
 import { Button } from 'antd';
 import useStudent from '../hooks/useStudent';
 import Loader from '../utilities/Loader';
+import { Link } from 'react-router-dom';
 
 
 const Profile = () => {
@@ -81,47 +82,12 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <hr />
-                                {/*         <div className="row">
-                                    <div className="col-sm-3">
-                                        <h6 className="mb-0">Company Name :	</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        {studentData.company_name}
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <h6 className="mb-0">Employee Number :	</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        {studentData.employee_number}
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <h6 className="mb-0">Business Category :	</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        {studentData.business_category}
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <h6 className="mb-0 text-nowrap">Formation of Company :	</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        {studentData.formation_of_company}
-                                    </div>
-                                </div>
-                                <hr /> */}
+
 
 
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <Button>Edit</Button>
+                                        <Link to='/user-db/edit-profile'>Edit</Link>
                                     </div>
                                 </div>
                             </div>

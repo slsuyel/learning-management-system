@@ -6,7 +6,7 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer data-aos="zoom-in-down" className=" pt-5">
+        <footer data-aos="zoom-in-down" className="bg-dark pt-5 text-white">
 
             <div className="container  px-4 px-md-3 ">
                 <div className="row">

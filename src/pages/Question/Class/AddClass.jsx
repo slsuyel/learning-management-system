@@ -13,7 +13,7 @@ const AddClass = () => {
     const [formData, setFormData] = useState({
         course_module_id: '',
         video_name: '',
-        video_url: '',
+        // video_url: '',
         videoFile: null
     });
 
@@ -24,19 +24,37 @@ const AddClass = () => {
         });
     };
 
+    // console.log(formData);
+
     const handleSubmit = async () => {
-        if (!formData.course_module_id || !formData.video_name || !formData.video_url) {
-            alert('Fill up all fields')
-            return
+        if (!formData.course_module_id || !formData.video_name || !formData.videoFile) {
+            alert('Fill up all fields');
+            return;
         }
-        setLoading(true)
-        const res = await callApi('post', '/api/course/videos', formData)
-        if (res.data.video_name) {
-            alert("Success")
-            setLoading(false)
+
+        setLoading(true);
+
+        const formDataForUpload = new FormData();
+        formDataForUpload.append('course_module_id', formData.course_module_id);
+        formDataForUpload.append('video_name', formData.video_name);
+        formDataForUpload.append('videoFile', formData.videoFile);
+
+        try {
+            const res = await callApi('post', '/api/course/videos', formDataForUpload, {
+                'Content-Type': 'multipart/form-data',
+            });
+
+            if (res.data.video_name) {
+                alert('Success');
+            }
+        } catch (error) {
+            console.error('Error uploading video:', error);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false)
     };
+
+
 
     const handleChangeCourse = (value) => {
         setSelectedCourse(value);
@@ -89,12 +107,12 @@ const AddClass = () => {
                         placeholder="Video Title"
                         onChange={(e) => handleChange('video_name', e.target.value)}
                     />
-                    <Input
+                    {/* <Input
                         required
                         style={{ marginBottom: '20px' }}
                         placeholder="Video Url"
                         onChange={(e) => handleChange('video_url', e.target.value)}
-                    />
+                    /> */}
                     <input
                         required
                         type="file"

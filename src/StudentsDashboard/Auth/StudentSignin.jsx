@@ -55,9 +55,9 @@ export default function StudentSignin() {
       {
         !authenticated ?
 
-          <div className="col-md-5 mx-auto">
-            <div className="login-logo">
-              <h3>Student Login</h3>
+          <div className="col-md-4 mx-auto mt-5">
+            <div className="login-logo text-center">
+              <h3 className="my-3">Student Login</h3>
             </div>
             <div className="card">
               <div className="card-body login-card-body">
@@ -108,11 +108,11 @@ export default function StudentSignin() {
                     </div>
                   </div>
                 </form>
-                <p className="mb-0 mt-2">
-                  <Link to={'/signup'} className="text-center text-decoration-none">
-                    Register a new account
-                  </Link>
-                </p>
+
+                <Link to={'/signup'} className="text-center text-decoration-none">
+                  <p className="mb-0 ps-2 t text-start"> Register a new account</p>
+                </Link>
+
               </div>
             </div>
           </div>

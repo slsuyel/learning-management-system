@@ -9,7 +9,6 @@ import Loader from '../../../utilities/Loader';
 const MyCourses = () => {
     const [selectedVideo, setSelectedVideo] = useState({});
     const [loader, setLoader] = useState(false)
-
     const { courseId } = useParams()
     const [data, setData] = useState({})
 
@@ -29,7 +28,7 @@ const MyCourses = () => {
         fetchData();
     }, [courseId]);
 
-
+    // console.log(data);
 
     const handleVideoClick = (video,) => {
         setSelectedVideo(video);
