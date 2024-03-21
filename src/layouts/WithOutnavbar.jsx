@@ -10,7 +10,7 @@ export default function WithOutnavbar() {
     <ScrollToTop>
       <Header />
 
-      <div style={{ paddingTop: '58px' }} className=''>
+      <div className=''>
         <Outlet />
       </div>
 

@@ -15,7 +15,6 @@ const Profile = () => {
         return <Loader />
     }
 
-
     return (
         <div className="container">
             <div className="main-body">
@@ -24,7 +23,7 @@ const Profile = () => {
                         <div className="card">
                             <div className="card-body">
                                 <div className="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width={150} />
+                                    <img src={studentData.attachment_file || "https://bootdey.com/img/Content/avatar/avatar7.png"} alt="u" className="rounded-circle" width={150} />
                                     <div className="mt-3">
                                         <h4>{studentData.founder_name}</h4>
                                         <p className="text-secondary mb-1">Student ID: {studentData.id}</p>

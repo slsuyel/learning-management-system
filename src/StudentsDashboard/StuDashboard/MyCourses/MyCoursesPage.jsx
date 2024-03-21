@@ -40,7 +40,7 @@ const MyCoursesPage = () => {
                                     <div className="card-body bg-body-secondary rounded w-100">
                                         <div className="row">
                                             <div className="col-xs-12 col-sm-5 my-auto">
-                                                <img className="img-fluid " src="https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1704289831068.jpg" alt="Next Level Web development" loading="lazy" />
+                                                <img className="img-fluid " src="https://campustechnology.com/-/media/EDU/CampusTechnology/2019-Images/20191209online.jpg" alt="Next Level Web development" loading="lazy" />
                                             </div>
                                             <div className="col-xs-12 col-sm-7">
                                                 <div className="fs-4 fw-bold text-custom">

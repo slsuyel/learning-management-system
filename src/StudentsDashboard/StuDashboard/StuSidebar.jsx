@@ -34,14 +34,14 @@ const StuSidebar = () => {
             key: "Teachers",
             label: <NavLink to="/user-db/teachers">Teachers</NavLink>
         },
-        {
-            key: "Success Story",
-            label: <NavLink to="/user-db/success-story">Success Story</NavLink>
-        },
-        {
-            key: "Settings",
-            label: <NavLink to="/user-db/settings">Settings</NavLink>
-        }
+        // {
+        //     key: "Success Story",
+        //     label: <NavLink to="/user-db/success-story">Success Story</NavLink>
+        // },
+        // {
+        //     key: "Settings",
+        //     label: <NavLink to="/user-db/settings">Settings</NavLink>
+        // }
     ]
 
 

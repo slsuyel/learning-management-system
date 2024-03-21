@@ -7,7 +7,7 @@ const About = () => {
     }, []);
 
     return (
-        <div data-aos="zoom-in-down" className='row mx-auto w-100 my-5' id='about'>
+        <div data-aos="zoom-in-down" className='row mx-auto w-100 my-5 pt-5' id='about'>
             <h3 className='text-center my-5'>About us</h3>
             <div className='col-md-6'>
                 <img className='img-fluid rounded-5' src="https://img.freepik.com/premium-photo/side-view-diverse-group-business-people-working-with-computers-modern-office-focus-senior-man-it-studio_236854-29762.jpg" alt="" />

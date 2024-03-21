@@ -22,7 +22,7 @@ const CoursesDetails = () => {
     }
     return (
 
-        <section>
+        <section className='container mt-5'>
             <div className='fs-4 text-custom'>
                 <BackBtn />
             </div>
@@ -45,9 +45,19 @@ const CoursesDetails = () => {
                         <h3 className='fs-1'>{details?.course_name}</h3>  <h5 className='fs-4 fw-bold text-success-emphasis'>instructor : {details?.instructor}</h5>
                     </div>
 
-                    <p className='fs-5 text-secondary'>
+                    {/* <p className='fs-5 text-secondary'>
                         {details?.descriptions}
+                    </p> */}
+
+                    <p className="my-3">
+                        <div className=' lh-base mb-2 p-2 rounded-1 text-secondary'
+                            dangerouslySetInnerHTML={{
+                                __html: `<p class='d-inline'> <span className="fs-5 text-secondary">
+                                ${details?.descriptions}:</span></p>`
+                            }}
+                        />
                     </p>
+
                 </div>
 
 
@@ -56,7 +66,7 @@ const CoursesDetails = () => {
                 <div className="col-md-5">
                     <div className="col-md-10 mx-auto durationbox ">
                         <div className='align-items-center d-flex fs-5 gap-3 justify-content-center my-2'>
-                            <div className='d-flex gap-1'>
+                            <div className='d-flex gap-1 font-bd'>
                                 <StarIcon />
                                 <StarIcon />
                                 <StarIcon />
@@ -66,8 +76,8 @@ const CoursesDetails = () => {
 
                             ({details?.rating} রিভিউ)
                         </div>
-                        <div className='align-items-center d-flex gap-2 justify-content-between'>
-                            <h2 className=" fw-bold text-custom">ফি {details?.price} টাকা </h2> <h5 className='bg-secondary fw-bold p-2 rounded-4 text-warning'> {Number(details.discount)}% <span className='text-white'> ছাড়</span> </h5>
+                        <div className='align-items-center d-flex gap-2 justify-content-between font-bd'>
+                            <h2 className=" fw-bold text-custom font-bd">ফি {details?.price} টাকা </h2> <h5 className='bg-secondary fw-bold p-2 rounded-4 text-warning '> {Number(details.discount)}% <span className='text-white font-bd'> ছাড়</span> </h5>
                         </div>
                         <div className="buttonbox">
                             <div className="text-center">
@@ -77,10 +87,11 @@ const CoursesDetails = () => {
                             </div>
                             <div className="d-flex justify-content-between my-2">
                                 <Button size='large' type="danger" className="bg-warning" icon={<HeartOutlined />}>
-                                    ফেভারিট
+                                    <span className='font-bd'>  ফেভারিট</span>
                                 </Button>
-                                <Button size='large' type="success" className=" bg-black" icon={<ShoppingCartOutlined />}>
-                                    কার্টে যুক্ত করুন
+                                <Button disabled size='large' type="success" className="bg-secondary-subtle font-bd" icon={<ShoppingCartOutlined />}>
+
+                                    <span className='font-bd'>    কার্টে যুক্ত করুন</span>
                                 </Button>
                             </div>
                         </div>
@@ -88,7 +99,7 @@ const CoursesDetails = () => {
                 </div>
             </div >
 
-            <div className="row mx-auto my-3">
+            {/* <div className="row mx-auto my-3">
                 <div className="col-md-6 my-2">
                     <div className='waht-learn-li'>
                         <h3>এই কোর্স থেকে কী কী শিখবেন?</h3>
@@ -110,11 +121,11 @@ const CoursesDetails = () => {
                         <img loading='lazy' className='img-fluid mt-3 rounded' src={details?.demoCertificate} alt="" />
                     </div>
                 </div>
-            </div >
+            </div > */}
 
             <CourseCurriculum modules={details.modules} />
 
-            <div>
+            {/* <div>
                 <h3> এই কোর্সটি যাদের জন্য</h3>
 
                 <p className="my-3">
@@ -138,7 +149,7 @@ const CoursesDetails = () => {
                 </p>
 
 
-            </div>
+            </div> */}
 
 
 

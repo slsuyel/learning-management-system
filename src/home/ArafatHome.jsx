@@ -1,7 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Arafat.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { callApi } from '../utilities/functions';
+import { toast } from 'react-toastify';
 const ArafatHome = () => {
+    const [loader, setLoader] = useState(false);
+    const navigate = useNavigate();
+    const defaultValue = {
+        attachment_file: 'n/a',
+        company_name: 'na',
+        location: 'na',
+        business_category: 'na',
+        founder_gender: 'N/A',
+    }
+
+
+    const [formData, setFormData] = useState({
+        founder_name: '',
+        founder_email: '',
+        founder_phone: '',
+        ref_code: '',
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSignUp = async (e) => {
+        setLoader(true);
+        e.preventDefault();
+
+        const res = await callApi('Post', '/api/students', { ...defaultValue, ...formData });
+
+        if (res.founder_name) {
+            toast.success('Signup successfully!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            setLoader(false);
+            navigate('/student/signin')
+        }
+        else {
+            toast.error('Something went wrong !!', {
+                position: toast.POSITION.TOP_CENTER
+            });
+            setLoader(false);
+        }
+    }
+
+
     return (
         <>
             <section id="main_hero" className="text-white py-5">
@@ -18,26 +69,45 @@ const ArafatHome = () => {
                             <div className="mx-5">
                                 <form>
                                     <div className="form-group">
-                                        <label htmlFor="floatingInput">Name</label>
-                                        <input type="text" className="form-control" />
+                                        <label htmlFor="founder_name">Name</label>
+                                        <input
+                                            required
+                                            type="text" className="form-control" id="founder_name" name="founder_name" value={formData.founder_name} onChange={handleChange} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="floatingInput">Email</label>
-                                        <input type="email" className="form-control" />
+                                        <label htmlFor="founder_email">Email</label>
+                                        <input
+                                            required
+                                            type="email" className="form-control" id="founder_email" name="founder_email" value={formData.founder_email} onChange={handleChange} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="floatingInput">Phone Number</label>
-                                        <input type="tel" className="form-control" />
+                                        <label htmlFor="founder_phone">Phone Number</label>
+                                        <input
+                                            required
+                                            type="number" className="form-control" id="founder_phone" name="founder_phone" value={formData.founder_phone} onChange={handleChange} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="floatingInput">Coupon Code</label>
-                                        <input type="text" className="form-control" />
+                                        <label htmlFor="founder_phone">Referral</label>
+                                        <input
+
+                                            type="text" className="form-control" id="ref_code" name="ref_code" value={formData.ref_code} onChange={handleChange} />
                                     </div>
-                                    <Link to='/signup' type="submit" className="btn btn-secondary btn-block w-100 mt-3">
-                                        SIGN UP
-                                    </Link>
-                                    <div className="text-center mt-3">
-                                        <Link to='/signup' className="text-white">Or LOGIN</Link>
+
+
+
+                                    <div className="form-group">
+                                        <label htmlFor="password">Password</label>
+                                        <input
+                                            required
+                                            type="password" className="form-control" id="password" name="password" value={formData.password} onChange={handleChange} />
+                                    </div>
+                                    <div className='align-items-center d-flex justify-content-between mt-3'>
+                                        <button disabled={loader} onClick={handleSignUp} type="submit" className="btn btn-warning fw-bold w-50">
+                                            SIGN UP
+                                        </button>
+                                        <div className="">
+                                            <Link to='/student/signin' className="text-white">Or LOGIN</Link>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -55,7 +125,7 @@ const ArafatHome = () => {
                         <div className="row">
                             {/* Free Plan */}
                             <div id="card_iteam" className="col-md-4">
-                                <div className="card mb-4 px-3 py-3">
+                                <div className="bg-foot border mb-4 px-3 py-3 rounded-4 text-white">
                                     <div className="card-body">
                                         <h5 className="card-title">Free</h5>
                                         <h1 className="card-title">Free</h1>
@@ -68,13 +138,13 @@ const ArafatHome = () => {
                                             <li>3 Users</li>
                                             <li>Unlimited Tasks</li>
                                         </ul>
-                                        <a href="#" className="btn btn-primary btn-block">Start for free</a>
+                                        <a href="/signup" className="btn btn-primary btn-block">Start for free</a>
                                     </div>
                                 </div>
                             </div>
                             {/* Unlimited Plan */}
                             <div id="card_iteam" className="col-md-4">
-                                <div className="card mb-4 px-3 py-3">
+                                <div className="bg-foot border mb-4 px-3 py-3 rounded-4 text-white">
                                     <div className="card-body">
                                         <h5 className="card-title">Unlimited</h5>
                                         <h1 className="card-title">$29</h1>
@@ -87,13 +157,13 @@ const ArafatHome = () => {
                                             <li>Priority Support</li>
                                             <li>Smart Notifications</li>
                                         </ul>
-                                        <a href="#" className="btn btn-primary btn-block">Buy Now</a>
+                                        <a href="/courses" className="btn btn-primary btn-block">Buy Now</a>
                                     </div>
                                 </div>
                             </div>
                             {/* Enterprise Plan */}
                             <div id="card_iteam" className="col-md-4">
-                                <div className="card mb-4 px-3 py-3">
+                                <div className="bg-foot border mb-4 px-3 py-3 rounded-4 text-white">
                                     <div className="card-body">
                                         <h5 className="card-title">Enterprise</h5>
                                         <h1 className="card-title">$35</h1>
@@ -106,7 +176,7 @@ const ArafatHome = () => {
                                             <li>Advanced Analytics</li>
                                             <li>Advanced Security</li>
                                         </ul>
-                                        <a href="#" className="btn btn-primary btn-block">Buy Now</a>
+                                        <a href="/courses" className="btn btn-primary btn-block">Buy Now</a>
                                     </div>
                                 </div>
                             </div>

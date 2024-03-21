@@ -6,6 +6,7 @@ import Paginate from '../../components/Paginate';
 import Loader from '../../utilities/Loader';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import BackBtn from '../../components/ui/BackBtn';
 const Students = () => {
     const [pageNo, setPageNo] = useState(1)
     const [totalPages, setTotalPages] = useState()
@@ -22,7 +23,7 @@ const Students = () => {
         try {
             const searchParams = new URLSearchParams(window.location.search);
             const page = searchParams.get('page') ? searchParams.get('page') : 1
-            const data = await callApi("get", `/api/students?perpage=5&page=${page}`);
+            const data = await callApi("get", `/api/students?perpage=10&page=${page}`);
             setStudents(data.data);
             setTotalPages(data.links)
             setPer_page(data.per_page)
@@ -69,14 +70,20 @@ const Students = () => {
 
     return (
         <>
+
+            <BackBtn />
+            <hr />
             <Table striped responsive>
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>founder name</th>
-                        <th>company name</th>
-                        <th>founder_email</th>
-                        <th>founder_phone</th>
+                        <th> name</th>
+                        <th> name</th>
+                        <th>email</th>
+                        <th>phone</th>
+                        <th>balance</th>
+                        <th>refer_count</th>
+
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -88,7 +95,12 @@ const Students = () => {
                                 <td>{student.founder_name}</td>
                                 <td>{student.company_name}</td>
                                 <td>{student.founder_email}</td>
+
+
+
                                 <td>{student.founder_phone}</td>
+                                <td>{student.balance}</td>
+                                <td>{student.refer_count}</td>
                                 <td className='d-flex justify-content-around gap-2'>
                                     <Link className='btn btn-primary text-decoration-none' to={`/dashboard/student/show/${student.id}`}>Show</Link>
 

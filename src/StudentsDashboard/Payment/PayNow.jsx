@@ -65,7 +65,7 @@ const PayNow = () => {
                             <div className="order_details">
                                 <div className="detail">
                                     <div className="detail-cap">
-                                        <img src="https://api.brightskills.com/course/MS PowerPoint Advanced Course/558-X-364_Course-Banner_2-of-MS-PowerPoint-Advanced-Course.jpg" alt="" height="100%" />
+                                        <img src="https://www.talentlms.com/old/wp-content/uploads/2018/09/important-elements-of-online-learning-courses.jpg" alt="" height="100%" />
                                     </div>
                                 </div>
                                 <div className="order_details_description">
@@ -89,14 +89,14 @@ const PayNow = () => {
                                     <p className="price">{details.price} টাকা</p>
                                 </div>
                             </div>
-                            <h4 className="coupon_title">কুপণ</h4>
+                            {/* <h4 className="coupon_title">কুপণ</h4>
                             <div className="order_details">
                                 <input type="text" placeholder="Enter Your Coupon" className="coupon_area " />
                                 <div className="order_details_price"></div>
                                 <div className="detail">
                                     <button className="btn-apply border-0">এপ্লাই</button>
                                 </div>
-                            </div>
+                            </div> */}
                             <hr className='mrhr' style={{ margin: '0px' }} />
                             <div className="cart_prices">
                                 <p className="title"><b >মোট মূল্য</b></p>

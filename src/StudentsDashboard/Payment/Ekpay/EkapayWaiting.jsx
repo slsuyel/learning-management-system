@@ -42,7 +42,6 @@ const EkapayWaiting = () => {
                 <div>Loading...</div>
             ) : (
                 <div className='d-flex justify-content-center'>
-
                     Payment Success <br />
                     transId is = {transId}
                 </div>

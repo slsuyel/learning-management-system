@@ -2,8 +2,20 @@ import React from "react";
 import SalesChart from "./SalesChart";
 import RoomCharts from "./RoomCharts";
 import { CardSubtitle, Col, Row } from "reactstrap";
+import useReport from "../../hooks/useReport";
+import Loader from "../../utilities/Loader";
 
 export default function Home() {
+
+  const { loading, students, paidStudents, totalBalance } = useReport()
+
+  if (loading) {
+    return <Loader />
+  }
+
+
+
+
   return (
 
     <>
@@ -20,17 +32,21 @@ export default function Home() {
           </CardSubtitle>
           <div className="bg-primary text-white my-3 p-3 rounded">
             <Row>
-              <Col md="4">
+              <Col md="3">
                 <h6>Total Students</h6>
-                <h4 className="mb-0 fw-bold">2345</h4>
+                <h4 className="mb-0 fw-bold">{students?.length}</h4>
               </Col>
-              <Col md="4">
-                <h6>Today Teachers</h6>
-                <h4 className="mb-0 fw-bold">145</h4>
+              <Col md="3">
+                <h6>Paid Students</h6>
+                <h4 className="mb-0 fw-bold">{paidStudents?.length}</h4>
               </Col>
-              <Col md="4">
-                <h6>Total Batches </h6>
-                <h4 className="mb-0 fw-bold">45</h4>
+              <Col md="3">
+                <h6> Total Balance </h6>
+                <h4 className="mb-0 fw-bold">{totalBalance}</h4>
+              </Col>
+              <Col md="3">
+                <h6> Batches </h6>
+                <h4 className="mb-0 fw-bold">00</h4>
               </Col>
             </Row>
           </div>

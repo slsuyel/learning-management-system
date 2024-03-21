@@ -1,15 +1,19 @@
 @import url('https://fonts.maateen.me/kalpurush/font.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
 
 
 body {
-  font-family: 'Kalpurush', sans-serif;
-  /* background: rgb(198, 231, 226);
-  background: linear-gradient(11deg, rgba(198, 231, 226, 1) 0%, rgba(229, 231, 232, 1) 87%, rgba(197, 197, 198, 1) 100%); */
   margin: 0 auto;
-
 }
 
+.font-bd {
+  font-family: 'Kalpurush', sans-serif !important;
+}
 
 
 a {

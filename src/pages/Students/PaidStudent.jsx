@@ -6,6 +6,7 @@ import Paginate from '../../components/Paginate';
 import Loader from '../../utilities/Loader';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import BackBtn from '../../components/ui/BackBtn';
 const PaidStudent = () => {
     const [pageNo, setPageNo] = useState(1)
     const [totalPages, setTotalPages] = useState()
@@ -22,16 +23,18 @@ const PaidStudent = () => {
         try {
             const searchParams = new URLSearchParams(window.location.search);
             const page = searchParams.get('page') ? searchParams.get('page') : 1
-            const data = await callApi("get", `/api/students?perpage=5&page=${page}`);
-            setStudents(data.data);
-            setTotalPages(data.links)
-            setPer_page(data.per_page)
-            setTotalitems(data.total)
-            if (page == 1) {
-                setPageNo(1);
-            } else {
-                setPageNo((page - 1) * data.per_page + 1);
-            }
+            const data = await callApi("post", `/api/paid/students`);
+            // console.log(data);
+
+            setStudents(data);
+            // setTotalPages(data.links)
+            // setPer_page(data.per_page)
+            // setTotalitems(data.total)
+            // if (page == 1) {
+            //     setPageNo(1);
+            // } else {
+            //     setPageNo((page - 1) * data.per_page + 1);
+            // }
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -69,14 +72,19 @@ const PaidStudent = () => {
 
     return (
         <>
+
+            <BackBtn />
+
             <Table striped responsive>
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>founder name</th>
-                        <th>company name</th>
-                        <th>founder_email</th>
-                        <th>founder_phone</th>
+                        <th> name</th>
+                        {/* <th>company name</th> */}
+                        <th>email</th>
+                        <th>phone</th>
+                        <th>balance</th>
+                        <th>refer count</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -86,9 +94,11 @@ const PaidStudent = () => {
                             <tr key={student.id}>
                                 <td>{index + pageNo}</td>
                                 <td>{student.founder_name}</td>
-                                <td>{student.company_name}</td>
+                                {/* <td>{student.company_name}</td> */}
                                 <td>{student.founder_email}</td>
                                 <td>{student.founder_phone}</td>
+                                <td>{student.balance}</td>
+                                <td>{student.refer_count}</td>
                                 <td className='d-flex justify-content-around gap-2'>
                                     <Link className='btn btn-primary text-decoration-none' to={`/dashboard/student/show/${student.id}`}>Show</Link>
 

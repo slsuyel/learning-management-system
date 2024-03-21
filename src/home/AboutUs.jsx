@@ -5,7 +5,7 @@ const AboutUs = () => {
         AOS.init();
     }, []);
     return (
-        <div data-aos="zoom-in-down">
+        <div data-aos="zoom-in-down " className='container'>
             <div className="row align-items-center">
                 <div className="col-lg-6 col-md-6 order-2 order-md-1 mt-4 pt-2 mt-sm-0 opt-sm-0">
                     <div className="row align-items-center">

@@ -29,11 +29,11 @@ const AllCourses = () => {
 
 
     return (
-        <div className='row mx-auto'>
-            <div className="courses-category col-md-12 my-2">
+        <div className='row mx-auto container'>
+            <div className="courses-category col-md-12 my-2 ">
 
-                <h3 className='fs-2'>সকল কোর্স</h3>
-                <p className='fs-5 me-3'>
+                <h3 className='fs-2 font-bd'>সকল কোর্স</h3>
+                <p className='fs-5 me-3 font-bd'>
                     আমাদের প্রতিটি কোর্স এখানে ক্যাটেগরি ভিত্তিতে সাজানো
                     হয়েছে। আপনার পছন্দের ক্যাটেগরিতে ক্লিক করলে রিলেটেড কোর্স এক
                     নজরে দেখতে পাবেন।
@@ -59,7 +59,7 @@ const AllCourses = () => {
                                     <div className="order_details py-3">
                                         <div className="detail">
                                             <div className="detail-cap rounded">
-                                                <img src="https://api.brightskills.com/course/MS PowerPoint Advanced Course/558-X-364_Course-Banner_2-of-MS-PowerPoint-Advanced-Course.jpg" alt="" height="100%" />
+                                                <img src="https://www.talentlms.com/old/wp-content/uploads/2018/09/important-elements-of-online-learning-courses.jpg" alt="" height="100%" />
                                             </div>
                                         </div>
                                         <div className="order_details_description border-0">
@@ -67,7 +67,7 @@ const AllCourses = () => {
                                                 <h3 className='fs-2 mb-0'>{course.course_name}</h3>
                                                 <p className='fs-4 m-0 p-0'>{course.instructor || "instructor"}</p>
                                             </div>
-                                            <div className="order_details_price bg-success-subtle fs-5 mb-0 p-2 rounded-4 text-danger">
+                                            <div className="order_details_price bg-success-subtle fs-5 mb-0 p-2 rounded-4 text-danger font-bd">
                                                 <p>{course.price || 0} টাকা</p>
                                             </div>
                                         </div>

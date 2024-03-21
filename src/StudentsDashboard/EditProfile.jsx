@@ -1,41 +1,108 @@
-import React from 'react';
-import { Form, Button, Input, message } from 'antd';
+import React, { useState } from 'react';
+import { Form, Button, Input, message, Upload, Alert } from 'antd';
+import { callApi } from '../utilities/functions';
+
+import { UploadOutlined } from '@ant-design/icons';
+import useStudent from '../hooks/useStudent';
+import Loader from '../utilities/Loader';
+import { useNavigate } from 'react-router-dom';
+
 
 const EditProfile = () => {
-    const onFinish = (values) => {
-        console.log('Received values:', values);
-        message.error('Features coming soon');
+    const navigate = useNavigate();
+    const id = localStorage.getItem("studentId")
+    const { studentData, isLoading } = useStudent(id, `/api/students/profile`)
+    const [loader, setLoader] = useState(false)
+
+
+    if (isLoading) {
+        return <Loader />
+    }
+
+
+    const onFinish = async (values) => {
+        setLoader(true)
+        const formData = new FormData();
+        formData.append('founder_name', values.founder_name);
+        formData.append('founder_phone', values.founder_phone);
+        formData.append('founder_gender', values.founder_gender);
+
+
+        if (values.attachment_file && values.attachment_file.fileList && values.attachment_file.fileList.length > 0) {
+            formData.append('attachment_file', values.attachment_file.fileList[0].originFileObj);
+        }
+
+        try {
+            const res = await callApi('post', `/api/students/update/${id}`, formData, {
+                'Content-Type': 'multipart/form-data',
+            });
+
+            if (res.founder_name) {
+                message.success('Profile updated successfully');
+            }
+            navigate(-1)
+            console.log(res);
+            setLoader(false)
+        } catch (error) {
+            console.error('Error:', error);
+            setLoader(false)
+        }
+        setLoader(false)
     };
+
+    const beforeUpload = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            console.log(reader.result);
+        };
+        return false;
+    };
+
+
 
     return (
         <div className="container">
             <div className="main-body">
                 <div className="row gutters-sm">
-                    <div className="col-md-4 mb-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width={150} />
-                                    <div className="mt-3">
-                                        <h4>Edit Profile</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-8">
+
+                    <div className="col-md-8 mx-auto">
                         <div className="card mb-3">
                             <div className="card-body">
                                 <Form
                                     name="edit_profile"
                                     onFinish={onFinish}
+
                                     initialValues={{
-                                        founder_name: '', // Initialize with current values if needed
-                                        founder_email: '',
-                                        founder_phone: '',
-                                        founder_gender: ''
+                                        founder_name: studentData.founder_name || '',
+                                        founder_phone: studentData.founder_phone || '',
+                                        founder_gender: studentData.founder_gender || '',
+                                        attachment_file: studentData.attachment_file || ""
                                     }}
+
                                 >
+
+
+                                    <label htmlFor="attachment_file">Profile Picture</label>
+                                    <Form.Item
+
+                                        name="attachment_file"
+                                        rules={[{ required: false }]}
+                                        className='text-center'
+                                    >
+                                        <Upload
+                                            beforeUpload={beforeUpload}
+                                            showUploadList={false}
+                                        >
+                                            {studentData.attachment_file && (
+                                                <img src={studentData.attachment_file} alt="Attachment Preview" className='rounded-circle' style={{ maxWidth: '200px', cursor: 'crosshair' }} />
+                                            )}
+                                            {!studentData.attachment_file && (
+                                                <Button icon={<UploadOutlined />}>Select File</Button>
+                                            )}
+                                        </Upload>
+                                    </Form.Item>
+
                                     <Form.Item
                                         label="Name"
                                         name="founder_name"
@@ -43,13 +110,9 @@ const EditProfile = () => {
                                     >
                                         <Input />
                                     </Form.Item>
-                                    <Form.Item
-                                        label="Email"
-                                        name="founder_email"
-                                        rules={[{ required: true, message: 'Please input your email!' }]}
-                                    >
-                                        <Input />
-                                    </Form.Item>
+
+
+
                                     <Form.Item
                                         label="Phone"
                                         name="founder_phone"
@@ -64,8 +127,8 @@ const EditProfile = () => {
                                         <Input />
                                     </Form.Item>
                                     <Form.Item>
-                                        <Button type="primary" htmlType="submit">
-                                            Save
+                                        <Button disabled={loader} type="primary" htmlType="submit">
+                                            {loader ? 'Pending' : ' Save'}
                                         </Button>
                                     </Form.Item>
                                 </Form>

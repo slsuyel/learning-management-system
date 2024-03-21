@@ -5,7 +5,7 @@ const Services = () => {
         AOS.init();
     }, []);
     return (
-        <div data-aos="zoom-in-down" className=" bootstrap snippets bootdey">
+        <div data-aos="zoom-in-down" className=" bootstrap snippets bootdey container mt-5">
             <section id="services" className="current">
                 <div className="services-top">
                     <div className="container bootstrap snippets bootdey">

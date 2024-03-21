@@ -6,6 +6,7 @@ import { Rating } from "@smastrom/react-rating";
 import { callApi } from "../../utilities/functions";
 import Swal from 'sweetalert2';
 import { toast } from "react-toastify";
+import BackBtn from "../../components/ui/BackBtn";
 
 const StudentShow = () => {
     const { id } = useParams();
@@ -89,17 +90,19 @@ const StudentShow = () => {
     return (
         <>
 
+            <BackBtn />
+
             <h2 className='text-center my-3'>Student Information</h2>
-            <div className="row">
-                <div className="col-md-6  d-flex flex-wrap ">
-                    <p className="mx-4 border-end border-dark pe-4">Founder Name: {founder_name}</p>
-                    <p className="mx-4 border-end border-dark pe-4">Founder Email: {founder_email}</p>
-                    <p className="mx-4 border-end border-dark pe-4">Founder Phone: {founder_phone}</p>
-                    <p className="mx-4 border-end border-dark pe-4">Founder Gender: {founder_gender}</p>
+            <div className="row ">
+                <div className="col-md-4 card py-3 d-flex flex-wrap ">
+                    <p className="mx-4  border-dark pe-4"> Name: {founder_name}</p>
+                    <p className="mx-4  border-dark pe-4"> Email: {founder_email}</p>
+                    <p className="mx-4  border-dark pe-4"> Phone: {founder_phone}</p>
+                    {/* <p className="mx-4 border-end border-dark pe-4"> Gender: {founder_gender}</p>
 
                     <p className="mx-4 border-end border-dark pe-4">Company Name: {company_name}</p>
-                    <p className="mx-4 border-end border-dark pe-4">Location: {location}</p>
-                    <p className="mx-4 border-end border-dark pe-4">Business Category: {business_category}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Location: {location}</p> */}
+                    {/* <p className="mx-4 border-end border-dark pe-4">Business Category: {business_category}</p>
                     <p className="mx-4 border-end border-dark pe-4">Short Note: {short_note}</p>
                     <p className="mx-4 border-end border-dark pe-4">Website Url: {website_url}</p>
                     <p className="mx-4 border-end border-dark pe-4">Employee Number: {employee_number}</p>
@@ -108,9 +111,9 @@ const StudentShow = () => {
                     <p className="mx-4 border-end border-dark pe-4">Company Facebook link: {facebook_link}</p>
                     <p className="mx-4 border-end border-dark pe-4">Company Youtube link: {youtube_link}</p>
                     <p className="mx-4 border-end border-dark pe-4">Company Linkedin link: {linkedin_link}</p>
-                    <p className="mx-4 border-end border-dark pe-4">Attachment (company profile/pitch deck): {attachment_file}</p>
+                    <p className="mx-4 border-end border-dark pe-4">Attachment (company profile/pitch deck): {attachment_file}</p> */}
                 </div>
-                <div className="col-md-6 card">
+                {/* <div className="col-md-6 card">
                     <h4 className="text-center">All questions and answer : {rating}</h4>
                     <div className="border d-flex gap-3 justify-content-end my-3 p-2">
                         <Rating
@@ -131,7 +134,7 @@ const StudentShow = () => {
 
                         </ol>
                     </div>
-                </div>
+                </div> */}
             </div></>
     );
 };

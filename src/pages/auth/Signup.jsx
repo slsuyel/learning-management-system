@@ -61,7 +61,7 @@ const Signup = () => {
         authenticated ? (
           navigate('/user-db', { replace: true })
         ) : <div className='row'>
-          <div className='border  mx-auto p-4 rounded row shadow'>
+          <div className='border  mx-auto p-4 rounded col-md-5 shadow'>
 
             <h1 className='fs-3 text-capitalize text-center text-success py-3'>SignUp for new students</h1>
 
