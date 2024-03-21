@@ -32,7 +32,7 @@ div#card_iteam {
 
 div#card_iteam p {
     font-size: 14px;
-    line-height: 1;
+    /* line-height: 1; */
 }
 
 button#sub_btn {

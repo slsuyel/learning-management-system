@@ -61,8 +61,7 @@ const ArafatHome = () => {
                         <div id="hero-sec-left" className="text-left col-md-5 d-flex flex-column justify-content-center align-items-center">
                             <h2 className="text-center">Monetize Your Facebook Page</h2>
                             <p className="text-center">
-                                Contact us for questions, technical assistance, or collaboration
-                                opportunities via the contact information provided.
+                                Enrollment is going on completely free or 75% discount and win an attractive laptop by affiliate
                             </p>
                         </div>
                         <div id="form_01" className="col-md-7">
@@ -120,7 +119,7 @@ const ArafatHome = () => {
                 <div className="wrap_div mx-5">
                     <div className="container">
                         <h2 id="pr_title" className="text-center mb-4">
-                            Course Price
+                            Courses
                         </h2>
                         <div className="row">
                             {/* Free Plan */}
@@ -129,6 +128,7 @@ const ArafatHome = () => {
                                     <div className="card-body">
                                         <h5 className="card-title">Free</h5>
                                         <h1 className="card-title">Free</h1>
+                                        {/* <h1 className="card-title">Free</h1>
                                         <p className="card-text">
                                             forever free for individuals and small teams up to 3 users
                                         </p>
@@ -137,7 +137,8 @@ const ArafatHome = () => {
                                             <li>100MB Storage</li>
                                             <li>3 Users</li>
                                             <li>Unlimited Tasks</li>
-                                        </ul>
+                                        </ul> */}
+                                        <p>Those who want to do our course completely free can join our website and do the course for free through affiliate program. By creating an account on the website you will receive a unique affiliate link. Through which if you enroll someone in our course then you will get 20% affiliate bonus of the course fee. By getting only five people to join you can activate your ID completely free and join our course.</p>
                                         <a href="/signup" className="btn btn-primary btn-block">Start for free</a>
                                     </div>
                                 </div>
@@ -146,16 +147,16 @@ const ArafatHome = () => {
                             <div id="card_iteam" className="col-md-4">
                                 <div className="bg-foot border mb-4 px-3 py-3 rounded-4 text-white">
                                     <div className="card-body">
-                                        <h5 className="card-title">Unlimited</h5>
-                                        <h1 className="card-title">$29</h1>
+                                        <h5 className="card-title ">Facebook Monetization Course- 75% Discounts</h5>
+                                        <h1 className="card-title">2500 ৳</h1>
                                         <p className="card-text">
-                                            per user/month billed yearly, $39 billed monthly
+                                            What you can learn through this package:
                                         </p>
                                         <ul className="list-unstyled">
-                                            <li>All in Free +</li>
-                                            <li>Unlimited Guests</li>
-                                            <li>Priority Support</li>
-                                            <li>Smart Notifications</li>
+                                            <li>All Kinds of Tips to Monetize Facebook Page</li>
+                                            <li>Providing Free Earning Generate Bot</li>
+                                            <li>All Kinds of Tips to Monetize YouTube Channel</li>
+
                                         </ul>
                                         <a href="/courses" className="btn btn-primary btn-block">Buy Now</a>
                                     </div>
@@ -165,9 +166,9 @@ const ArafatHome = () => {
                             <div id="card_iteam" className="col-md-4">
                                 <div className="bg-foot border mb-4 px-3 py-3 rounded-4 text-white">
                                     <div className="card-body">
-                                        <h5 className="card-title">Enterprise</h5>
-                                        <h1 className="card-title">$35</h1>
-                                        <p className="card-text">
+                                        <h5 className="card-title">Web Design and Development Course - Enterprise</h5>
+                                        <h1 className="card-title">10000৳</h1>
+                                        {/* <p className="card-text">
                                             per user/month billed yearly, $45 billed monthly
                                         </p>
                                         <ul className="list-unstyled">
@@ -175,7 +176,8 @@ const ArafatHome = () => {
                                             <li>Bulk Export</li>
                                             <li>Advanced Analytics</li>
                                             <li>Advanced Security</li>
-                                        </ul>
+                                        </ul> */}
+                                        <h5 className='py-5 my-5 text-center'>Upcoming</h5>
                                         <a href="/courses" className="btn btn-primary btn-block">Buy Now</a>
                                     </div>
                                 </div>
@@ -191,20 +193,22 @@ const ArafatHome = () => {
                         <div id="wrap_left" className="foot_left col-md-6">
                             <h2 className="text-start mb-4">Get In Touch</h2>
                             <div id="hero-sec-left">
-                                <h2 className="text-center mb-4">Convey Your Ideas to Us</h2>
+                                <h2 className="text-center mb-4">Syed Shaharear Arafat
+                                </h2>
                                 <p className="text-center mb-4">
-                                    Contact us for questions, technical assistance, or collaboration
-                                    opportunities via the contact information provided.
+                                    Project Manager and Trainer (Government Her Power Project, Sheikh Kamal IT Incubation Center Project, LEDP Project etc.)
                                 </p>
                             </div>
                             <div className="container text-start">
-                                <p className="mb-3"><i className="fas fa-phone" /> +123-456-7890</p>
+                                <p className="mb-3"><i className="fas fa-phone" /> +8801703658487</p>
                                 <p className="mb-3">
-                                    <i className="fas fa-envelope" /> hello@reallygreatsite.com
+                                    <i className="fas fa-envelope" /> s2adigitalworld@gmail.com
                                 </p>
                                 <p className="mb-3">
-                                    <i className="fas fa-map-marker-alt" /> 123 Anywhere ST, Any City,
-                                    12345
+                                    <i className="fas fa-map-marker-alt" />
+
+                                    <a className='text-white ms-1' href="https://web.facebook.com/SYED.SHAHAREAR.ARAFAT">Syed Shaharear Arafat</a>
+
                                 </p>
                             </div>
                         </div>
