@@ -42,6 +42,10 @@ const Affiliate = () => {
 
     // console.log(studentData);
 
+    const handleWithdraw = () => {
+        message.error('no balance for minimum withdraw')
+    }
+
 
     return (
         <div>
@@ -73,6 +77,11 @@ const Affiliate = () => {
                     <h5>Total Earnings</h5>
                     <Card>
                         {studentData.balance}
+                        <br />
+                        <br />
+
+                        <Button type="primary" danger onClick={handleWithdraw} >Withdraw Balance</Button>
+
                     </Card>
                 </div>
             </div>
