@@ -11,6 +11,11 @@ body {
   margin: 0 auto;
 }
 
+i {
+  font-family: "Font Awesome 6 Free" !important;
+}
+
+
 .font-bd {
   font-family: 'Kalpurush', sans-serif !important;
 }

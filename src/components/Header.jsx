@@ -62,8 +62,8 @@ const Header = () => {
                 <Nav className="justify-content-end navbar-nav w-100">
                     <Nav.Link className='text-dark' href="/">Home</Nav.Link>
                     <Nav.Link className='text-dark' href="/courses">Courses</Nav.Link>
-                    <Nav.Link className='text-dark' href="/services">Services</Nav.Link>
-                    <Nav.Link className='text-dark' href="/about">About Us</Nav.Link>
+                    {/* <Nav.Link className='text-dark' href="/services">Services</Nav.Link>
+                    <Nav.Link className='text-dark' href="/about">About Us</Nav.Link> */}
 
                     {
                         isLoggedIn === true ?

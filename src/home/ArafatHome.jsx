@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { PhoneOutlined, MailOutlined, FacebookOutlined } from '@ant-design/icons';
+
 import './Arafat.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { callApi } from '../utilities/functions';
@@ -148,16 +150,17 @@ const ArafatHome = () => {
                                 <div className="bg-foot border mb-4 px-3 py-3 rounded-4 text-white">
                                     <div className="card-body">
                                         <h5 className="card-title ">Facebook Monetization Course- 75% Discounts</h5>
+                                        <span className='ms-2 text-danger text-decoration-line-through'>10000 ৳</span>
                                         <h1 className="card-title">2500 ৳</h1>
                                         <p className="card-text">
                                             What you can learn through this package:
                                         </p>
-                                        <ul className="list-unstyled">
+                                        <ol class="">
                                             <li>All Kinds of Tips to Monetize Facebook Page</li>
-                                            <li>Providing Free Earning Generate Bot</li>
-                                            <li>All Kinds of Tips to Monetize YouTube Channel</li>
+                                            <li>Providing Free Earning Generate Bot</li>
+                                            <li>All Kinds of Tips to Monetize YouTube Channel</li>
+                                        </ol>
 
-                                        </ul>
                                         <a href="/courses" className="btn btn-primary btn-block">Buy Now</a>
                                     </div>
                                 </div>
@@ -200,17 +203,14 @@ const ArafatHome = () => {
                                 </p>
                             </div>
                             <div className="container text-start">
-                                <p className="mb-3"><i className="fas fa-phone" /> +8801703658487</p>
-                                <p className="mb-3">
-                                    <i className="fas fa-envelope" /> s2adigitalworld@gmail.com
-                                </p>
-                                <p className="mb-3">
-                                    <i className="fas fa-map-marker-alt" />
-
+                                <p className=""><PhoneOutlined /> +8801703658487</p>
+                                <p className=""><MailOutlined /> s2adigitalworld@gmail.com</p>
+                                <p className="">
+                                    <FacebookOutlined />
                                     <a className='text-white ms-1' href="https://web.facebook.com/SYED.SHAHAREAR.ARAFAT">Syed Shaharear Arafat</a>
-
                                 </p>
                             </div>
+
                         </div>
                         <div className="foot_right col-md-6">
                             <div className="main_from py-4">
