@@ -59,7 +59,7 @@ const ArafatHome = () => {
                 <div className="container">
                     <div className="wrap-sec row">
                         <div id="hero-sec-left" className="text-left col-md-5 d-flex flex-column justify-content-center align-items-center">
-                            <h2 className="text-center">Convey Your Ideas to Us</h2>
+                            <h2 className="text-center">Monetize Your Facebook Page</h2>
                             <p className="text-center">
                                 Contact us for questions, technical assistance, or collaboration
                                 opportunities via the contact information provided.
